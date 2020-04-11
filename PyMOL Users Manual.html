@@ -1,0 +1,593 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=iso-8859-1">
+<STYLE TYPE="text/css"><!--
+BODY { font-family: serif }
+H1 { font-family: sans-serif }
+H2 { font-family: sans-serif }
+H3 { font-family: sans-serif }
+H4 { font-family: sans-serif }
+H5 { font-family: sans-serif }
+H6 { font-family: sans-serif }
+SUB { font-size: smaller }
+SUP { font-size: smaller }
+PRE { font-family: monospace }
+--></STYLE>
+<TITLE>PyMOL Users Manual</TITLE></HEAD>
+<BODY>
+<A HREF="toc.html">Contents</A>
+<A HREF="S0200start.html">Previous</A>
+<A HREF="S0220commands.html">Next</A>
+<HR>
+<H1><A NAME="6">Getting Started with Commands</A></H1>
+<P> This section steps through a typical PyMOL session, introducing
+ typed commands and describing how PyMOL responds to them. The details
+ of command syntax are in the section titled &quot;PyMOL Command Language.&quot;</P>
+<P> The PyMOL language is case-sensitive, but upper case is not used in
+ the current package. So just remember to type all your commands in
+ lower case.</P>
+<H2><A NAME="6_1">Recording Your Work (Optional)</A></H2>
+<P> While you are learning PyMOL or doing complex projects, you may want
+ to keep a record of all the commands you give in a plain text log-file
+ that you can read and edit. To open a log-file, type the command<B>
+ log_open</B> followed by a file-name:</P>
+<PRE>   
+SYNTAX
+   
+   log_open <I>log-file-name</I>
+      			
+EXAMPLE
+   
+   <B>PyMOL&gt;</B> log_open log1.pml 			
+</PRE>
+<P> All your commands, typed or clicked, will be recorded in the
+ log-file. You should give your<I> log-file-name</I> the extension
+ &quot;.pml&quot; so you can load the file as a script, to repeat your commands in
+ a new session (see the subsection titled &quot;Sessions and Scripts&quot; below).</P>
+<P> To stop recording your commands, type<B> log_close</B>. If you don't
+ type<B> log_close</B> before you exit PyMOL, your log-file will still
+ be saved to disk.</P>
+<P> If you just want to save the current state of your PyMOL work
+ without concern for the steps you took and the commands you gave, you
+ can create a session-file (see &quot;Sessions and Scripts&quot;).</P>
+<H2><A NAME="6_2">Loading Data</A></H2>
+ Next you need to input your data from a file, say atomic coordinates in
+ PDB format:
+<PRE>   
+SYNTAX
+   
+   load <I>data-file-name</I>
+      			
+EXAMPLE
+   
+   <B>PyMOL&gt;</B> load $PYMOL_PATH/test/dat/pept.pdb 			
+</PRE>
+ Given this command, PyMOL will open and read the file &quot;pept.pdb,&quot;
+ create and name a corresponding object, display a representation of the
+ object in the viewer, and add the object's name to the control panel.
+<P>By default, PyMOL names the object after the file it read. You can
+ assign a different name to the object by typing the name in the command
+ line:</P>
+<PRE>
+SYNTAX
+   
+   load <I>data-file-name, object-name</I>	
+      
+EXAMPLES 
+   
+   <B>PyMOL&gt;</B> load $PYMOL_PATH/test/dat/pept.pdb        # The object is named &quot;pept&quot;. 
+                                                    # PyMOL doesn't use  
+                                                    # the file-name extension
+                                                    # &quot;.pdb&quot; in the object-name.  
+                                                      
+   <B>PyMOL&gt;</B> load $PYMOL_PATH/test/dat/pept.pdb, test  # The object is named &quot;test&quot;.
+</PRE>
+ (Note that &quot;#&quot; is a comment character, so anything you type to the
+ right of &quot;#&quot; in a command line is not interpreted by PyMOL.)
+<P> The command for loading a file follows typical PyMOL syntax.<B> load</B>
+ is a<I> keyword</I>; it calls PyMOL to perform a certain function.<I>
+ data-file-name</I> and<I> object-name</I> are arguments to<B> load</B>.
+ These arguments tell PyMOL what file to load and what to name it, but
+ in general, arguments to keywords just supply information that PyMOL
+ needs to carry out commands.</P>
+<H2><A NAME="6_3">Manipulating Objects</A></H2>
+<P>After PyMOL creates an object, you can manipulate it in the view
+ window and control panel with your mouse, and also by typing commands.
+ For example, you can change from the default representation, called<B>
+ lines</B>, to the more hefty<B> sticks</B>. First get rid of the<B>
+ lines</B> and then show the<B> sticks</B>:</P>
+<PRE>
+SYNTAX
+   
+   hide <I>representation</I> 
+      
+   show <I>representation</I>
+      	
+EXAMPLES
+   
+   <B>PyMOL&gt;</B> hide lines       # The object shown in lines disappears from view. 
+      
+   <B>PyMOL&gt;</B> show sticks      # The object is represented as sticks in the viewer.
+</PRE>
+ Other representations are<B> cartoon</B>s,<B> ribbon</B>s,<B> dots</B>,<B>
+ spheres</B>,<B> surface</B>s, and<B> mesh</B>es (See the Section titled
+ &quot;Representations&quot;).
+<H3><A NAME="6_3_1">Atom Selections</A></H3>
+<P> If you want to manipulate a subset of the atoms and bonds in a
+ molecule, you can use<I> atom selections.</I> PyMOL is pretty
+ sophisticated when it comes to selecting, grouping and naming groups of
+ atoms. For example, you can select particular residues or atoms in a
+ binding pocket, or a hydrophobic patch, or all the alanines in a helix,
+ and so on. The Section titled &quot;PyMOL Command Language&quot; gives the
+ details for selecting interesting groups of atoms.</P>
+<P> You can use a selection just once, or you can name it to make it
+ easier to use again later. For example, you can zoom in on a selection
+ &quot;on the fly:&quot;</P>
+<PRE>
+SYNTAX
+   
+   zoom <I>selection-expression</I>    # Select the atoms just for zooming.
+      
+EXAMPLE 
+   
+   <B>PyMOL&gt;</B> zoom resi 1-10        # The <I>selector</I> <B>resi</B> 
+                                # chooses amino acid residues 
+                                # given by the PDB sequence number 
+                                # <I>identifier</I> &quot;1-10.&quot;   
+</PRE>
+<I> Selection-expression</I>s range from single words to long
+ complicated expressions. An<I> object-name</I> may be a<I>
+ selection-expression</I>. The default<I> selection-expression</I> is<B>
+ all</B>, which refers to all the atoms that are currently loaded. If a<I>
+ selection-expression</I> is missing, PyMOL will apply the command to<B>
+ all</B>. We'll keep our<I> selection-expression</I>s short in this
+ section.
+<P> If you name the selection, you will be able to manipulate it any
+ number of times. Object and selection names may include the upper or
+ lower case characters (A/a to Z/z), numerals (0 to 9), and the
+ underscore character (_). Characters to avoid include:</P>
+<PRE>
+! @ # $ % ^ &amp;* ( ) ' &quot; [ ] { } \ | ~ ` &lt;&gt; . ? / 
+</PRE>
+<P> First, name the selection:</P>
+<PRE>
+SYNTAX
+   
+   select <I>selection-name, selection-expression</I>   
+  
+EXAMPLES 
+      
+   <B>PyMOL&gt;</B> select akeeper, resi 1-10    # Select the residues and name them &quot;akeeper.&quot;
+                                      
+</PRE>
+ Then use it:
+<PRE>
+SYNTAX
+         
+   zoom <I>selection-name</I>
+      
+   hide <I>representation, selection-name</I>
+      	
+   show <I>representation, selection-name</I>
+      
+EXAMPLES 
+   
+   <B>PyMOL&gt;</B> zoom akeeper                 # Zoom in on them in the viewer.
+   
+   <B>PyMOL&gt;</B> hide everything, akeeper     # Hide their representation in the viewer.
+                                                          
+   <B>PyMOL&gt;</B> show spheres, akeeper        # Show them in a different representation,
+                                       # spheres, this time.
+</PRE>
+<P> When you create a<I> selection-name,</I> PyMOL puts it in the
+ control panel so you can apply control panel functions to the selection
+ using your mouse (See the section titled &quot;PyMOL Command Language&quot;).</P>
+<P> Named-selections such as &quot;akeeper&quot; are manipulated like PyMOL
+ objects, but objects and named-selections are fundamentally different.
+ PyMOL creates an<I> object-name</I> to locate data when you load a data
+ file. Making selections is a way of pointing to a subset of that data.
+ To distinguish<I> selection-name</I>s from<I> object-name</I>s,<I>
+ selection-name</I>s are shown inside parentheses in the control panel.</P>
+<P> When you delete a<I> selection-name</I>, the data are still found
+ under the<I> object-name</I>, but the data are no longer organized as
+ the selection. In contrast, after you delete an object, you must reload
+ the data to have access to it again.</P>
+<PRE>
+SYNTAX
+      
+   delete <I>selection-name</I> 
+      	
+   delete <I>object-name</I>
+      
+EXAMPLES 
+   
+   <B>PyMOL&gt;</B> delete akeeper              # &quot;akeeper&quot; is gone, but the object remains.  
+      	
+   <B>PyMOL&gt;</B> delete pept                 # The atoms and bonds in &quot;pept&quot; are gone.
+</PRE>
+<H3><A NAME="6_3_2">Coloring Objects and Selections</A></H3>
+<P> You can apply various colors to selections and objects using typed
+ commands. Predefined<I> color-name</I>s are listed under the
+ settings/colors pull-down menu. Many of them can be chosen from the
+ control panel. See the section titled &quot;Settings&quot; to find out how to
+ define more colors.</P>
+<PRE>
+SYNTAX
+      
+   color <I>color-name</I>                    # All the representations of
+                                       # loaded objects are colored.    
+      
+   color <I>color-name, selection-expression</I>       # The representation of
+                                                # the selection is colored.   
+
+EXAMPLES 
+   
+   <B>PyMOL&gt;</B> color white                  # Everything turns white. 
+                                       # This looks fine on the
+                                       # default black background, 
+                                       # but causes disappearance
+                                       # if you've changed the background to white.
+                                                
+   <B>PyMOL&gt;</B> color orange, pept           # Remember that &quot;pept&quot; is our <I>object-name</I>,
+                                       # so the entire object is colored orange.
+      
+   <B>PyMOL&gt;</B> color green, resi 50+54+58   # The representation of
+                                       # residues numbered 50, 54 and 58 
+                                       # is colored green.
+      
+   <B>PyMOL&gt;</B> color yellow, resi 60-90     # The representation of
+                                       # residues numbered 60 through 90 
+                                       # is colored yellow.
+      
+   <B>PyMOL&gt;</B> color blue, akeeper          # Residues numbered 1-10, 
+                                       # which were collected in
+                                       # the named selection &quot;akeeper,&quot; 
+                                       # are colored blue. 
+                                         
+   <B>PyMOL&gt;</B> color red, ss h              # The representations of
+                                       # helical residues
+                                       # are colored red.
+                                        
+   <B>PyMOL&gt;</B> color yellow, ss s           # The representations of
+                                       # beta sheet residues
+                                       # are colored yellow.
+                                          
+   <B>PyMOL&gt;</B> color green, ss l+&quot;&quot;         # The representations of
+                                       # loop and unassigned residues
+                                       # are colored green.                                                          
+</PRE>
+<P> In the last three examples, the<I> selector</I><B> ss</B> chooses
+ secondary structures specified by<B> h</B> for helix,<B> s</B> for beta
+ sheet strand and<B> l+&quot;&quot;</B> for loops and unspecified structures.</P>
+<H3><A NAME="6_3_3">Turning Objects and Selections On and Off</A></H3>
+<P> PyMOL can hold several objects in memory at the same time. The
+ commands<B> disable</B> and<B> enable</B> allow you to eliminate
+ representations of objects from the viewer while still controlling
+ their properties with commands.</P>
+<PRE>
+SYNTAX
+      
+   enable <I>object-name</I> 
+               
+EXAMPLE
+
+   <B>PyMOL&gt;</B> load $PYMOL_PATH/test/dat/fc.pdb                                          
+   <B>PyMOL&gt;</B> load $PYMOL_PATH/test/dat/pept.pdb 
+   
+   <B>PyMOL&gt;</B> disable pept                           # All representations of &quot;pept&quot;
+                                                 # are removed from view. 
+                                               
+   <B>PyMOL&gt;</B> color yellow, name c+o+n+ca            # Backbone atoms in both &quot;fc&quot;
+                                                 # and &quot;pept&quot; are colored yellow, 
+                                                 # but &quot;pept&quot; atoms 
+                                                 # are still not visible.
+                                                     
+   <B>PyMOL&gt;</B> enable pept                            # &quot;pept&quot; atoms are visible and 
+                                                 # its backbone atoms are yellow.                    
+</PRE>
+<P> You can also use the<B> disable</B> command to get rid of the pink
+ dots that identify the last-named selection in the viewer:</P>
+<PRE>
+SYNTAX
+      
+   enable <I>selection-name</I> 
+               
+   
+EXAMPLE
+
+   <B>PyMOL&gt;</B> select bb, name c+o+n+ca     # Atoms included in the 
+                                       # named-selection are indicated
+                                       # with pink dots in the viewer.  
+                                       
+   <B>PyMOL&gt;</B> disable bb                   # The pink dots disappear,
+                                       # but the named selection &quot;bb&quot;
+                                       # is still visible.   
+                                       
+   <B>PyMOL&gt;</B> color red, bb                # You can still manipulate &quot;bb.&quot;                                            
+</PRE>
+ You can still operate on the representations of objects that are
+ disabled, even with the commands<B> show</B> and<B> hide</B>. The
+ results will be apparent when you subsequently<B> enable</B> the
+ object.
+<H2><A NAME="6_4"> Changing Your Point of View</A></H2>
+<P> Dragging on a molecule with the mouse is often the easiest way to
+ manouver, but typed commands such as<B> zoom</B> and<B> orient</B> give
+ you a different form of control, allowing computations to direct the
+ view.<B> zoom</B>, as the name suggests, brings an object or selection
+ close up in the center of the field of view. If the object or selection
+ doesn't fit in the current view, the view opens out to include it. If
+ it is just a small part of the current view, the view closes in to fill
+ more of the screen with it.</P>
+<PRE>
+SYNTAX
+      
+   zoom <I>selection-expression</I>        # The &quot;camera&quot; moves close                                        
+                                    # to the selection so it fills the viewer,
+                                    # or moves further away to include
+                                    # all of the selection in the viewer 
+</PRE>
+<P><B> orient</B> is a useful command when you want a fresh start in
+ viewing the molecule. It aligns the object or selection so its largest
+ dimension is shown horizontally, and its second largest dimension is
+ shown vertically.</P>
+<PRE>
+SYNTAX
+      
+   orient <I>selection-expression</I>      # The selection is aligned 
+                                    # for maximum visibility in the viewer.  
+</PRE>
+<P> You can store orientations and recall them later in your PyMOL
+ session using the command<B> view.</B> Storing a view only saves the
+ viewpoint on the objects in the viewer. It does not save their
+ representation. To store a view for later in the session, you need to
+ &quot;key&quot; it, that is, to give a name or number as an argument to the
+ command<B> view</B>. A second argument tells PyMOL whether you want it
+ to store the view or recall it.</P>
+<PRE>
+SYNTAX
+      
+   view <I>key, action</I>           # The possible actions are <B>store</B> and <B>recall</B>.     
+      
+EXAMPLES 
+   
+   <B>PyMOL&gt;</B> view v1, store      # The current view is named &quot;v1&quot; and stored.
+
+   <B>PyMOL&gt;</B> view v1, recall     # The view keyed &quot;v1&quot; is restored.  
+                                               
+   <B>PyMOL&gt;</B> view v1             # <B>recall</B> is the default argument to <B>view</B>,
+                              # so this also recalls &quot;v1.&quot;                                        
+</PRE>
+<P> The keyword<B> view</B> only stores an orientation for the duration
+ of the current PyMOL session. The next section gives the recipe for
+ saving and restoring views in different PyMOL sessions.</P>
+<H2><A NAME="6_5">Saving Your Work</A></H2>
+<P> PyMOL saves your work in f kinds of processes: (1) Before you give a
+ series of commands, you can initiate the process of logging your
+ commands into plain text log-files that can later be used as scripts.
+ (2) At any point in a PyMOL session you can save the memory state of
+ the program by creating a session file that can later be loaded to
+ restore that memory state. (3) You can write a graphics file to store
+ the image you have created in the viewer for sharing or publication.</P>
+<H3><A NAME="6_5_1">Scripts and Log Files</A></H3>
+<P> A PyMOL script is just a text file, such as a log-file, containing
+ typed PyMOL commands separated by carriage returns. When a script is
+ loaded into PyMOL the commands it contains are executed. PyMOL expects
+ scripts to have &quot;.pml&quot; file-name extensions (this is not strictly
+ required, but it is good practice).</P>
+<P> You can use log-files as scripts, and you can create scripts in a
+ text editor such as<B> emacs</B>,<B> jot</B>, or<B> notepad</B>. It's
+ often useful to keep a text editor open in a separate window while
+ using PyMOL. Commands can then be cut and pasted between the two
+ programs.</P>
+<P> You can open a new log-file by typing<B> log_open</B><I>
+ log-file-name</I>, or by clicking on &quot;log&quot; under the &quot;File&quot; menu and
+ naming the log-file in the dialog box. You can also append commands to
+ an existing log-file by choosing &quot;append&quot; or &quot;resume&quot; in the &quot;File&quot;
+ menu. When you &quot;resume&quot; rather than &quot;append,&quot; the existing log-file is
+ first loaded as a script, and then subsequent commands are written to
+ it.</P>
+<P> Once you have opened a log-file in any of these ways, PyMOL will
+ write and save all your commands, whether they are typed or given by
+ clicking on the buttons in the GUI.</P>
+ However, to store the orientation of a molecule into a log-file, you
+ need to give the command<B> get_view</B> (type it or use the GUI
+ button). You may find it convenient to<B> get_view</B> several times in
+ a PyMOL session, and then edit the log-file to select the most useful
+ views.
+<P> Scripts can be executed in several ways. Under Windows, scripts can
+ be run in a new PyMOL session by double clicking on the script's icon.
+ Alternatively, you can run a script using the &quot;File&quot; menu's &quot;Run&quot;
+ option. PyMOL also understands &quot;<B>@</B>&quot; as the typed command that
+ loads a script:</P>
+<PRE>   
+SYNTAX
+
+   @<I>script-file-name</I>
+
+EXAMPLE
+
+   <B>PyMOL&gt;</B> @my_script.pml
+</PRE>
+<P> You can also include the<I> script-file-name</I> when launching
+ PyMOL from a command line:</P>
+<PRE>   
+SYNTAX
+
+   pymol <I>script-file-name</I>
+
+EXAMPLE (Windows)
+
+   <B>C:\&gt;</B> pymol.exe my_script.pml
+
+EXAMPLE (Unix)
+
+   <B>unix&gt;</B> ./pymol.com my_script.pml 
+</PRE>
+<H3><A NAME="6_5_2">png Files</A></H3>
+<P> Once you are satisfied with the representation and orientation of
+ your molecule, you may want to save the image in a graphics file.
+ Before you do that, you can improve the quality of the graphics by
+ switching from PyMOL's fast default graphics engine, OpenGL, to its ray
+ tracer. The ray tracer is slower, but produces higher quality
+ renderings for display and publication. Ray tracing shows how light is
+ reflected and how shadows fall in a three-dimensional world. Ray
+ tracing may take some minutes for a large complex object. The keyword<B>
+ ray</B> calls PyMOL's raytracer to redraw and display the image in the
+ view window (See the section titled &quot;Ray Tracing&quot; for more details).</P>
+<P> To save an image to a file, raytraced or not, use the &quot;Save Image&quot;
+ option in the &quot;File&quot; menu or type the<B> png</B> command:</P>
+<PRE>   
+SYNTAX
+
+   png <I>file-name</I>
+
+EXAMPLE
+
+   <B>PyMOL&gt;</B>  png $PYMOL_PATH/pep    # The file-name extension &quot;.jpeg&quot; is 
+                                  # added. The image file &quot;pep.jpeg&quot; is stored 
+                                  # in a path below the PyMOL installation.
+</PRE>
+ The PNG file format is directly readable by PowerPoint. It can be
+ converted into other formats using a package like ImageMagick.
+<H3><A NAME="6_5_3">Session Files</A></H3>
+<P> If you want to be able to return to the current state of PyMOL, then
+ you can create a session-file (Choose &quot;Save Session&quot; in the &quot;File&quot; menu
+ and respond to the dialog box by naming the file with a &quot;.pse&quot;
+ file-name extension). This utility works like the &quot;Save&quot; utility in a
+ word processing program. A PyMOL session-file is a symbolic record of
+ the state of PyMOL's memory, including the the objects that have been
+ loaded or created, the named-selections that have been created, and the
+ display in the viewer.</P>
+<P> When you open the saved session-file, PyMOL's memory returns to the
+ state that was saved. Because a session-file represents a PyMOL memory
+ state, opening one means that you are eliminating everything that you
+ currently have in PyMOL's memory, and replacing it with the memory
+ state from the session-file.</P>
+<P> A session-file differs from a log-file or a script in a number of
+ ways. You have to open a log-file before you give the commands you want
+ to save, but a session-file can be created at any point. A session-file
+ is invoked by choosing &quot;open&quot; under the file menu, while a log-file is
+ &quot;run&quot; as a script. Also, you can't write or edit session-files, as you
+ can log-files and scripts.</P>
+<P> It's a good idea to create session-files at strategic points in
+ PyMOL sessions, for example, when you decide to explore one of several
+ options. In this way, session-files can be used to replace an &quot;undo&quot;
+ utility, which PyMOL lacks. You can store any number of PyMOL states in
+ successive session-files, and revert to them, effectively &quot;undo&quot;-ing
+ the work you did since creating the session-file.</P>
+<H2><A NAME="6_6">Command-Line Shortcuts</A></H2>
+<P>Since almost nobody likes to type, PyMOL's command-line interface
+ includes several &quot;shortcut&quot; features designed to reduce typing. If you
+ are a unix user, you will recognize the similarity with features found
+ in tcsh or bash.</P>
+<H3><A NAME="6_6_1">Command Completion using TAB</A></H3>
+<P>If you type the first few characters of a command and then hit TAB,
+ PyMOL will either complete the command or print out a list of which
+ commands match the command.</P>
+<PRE> 
+EXAMPLE
+  
+   <B>PyMOL&gt;</B> sel 
+       
+   # hitting TAB will produce 
+   
+   <B>PyMOL&gt;</B> select
+   </PRE>
+<P>If you hit the TAB key on a blank command line, PyMOL will output a
+ list of its commands.</P>
+<H3><A NAME="6_6_2">Filename Completion using TAB</A></H3>
+<P> Some of the files you need to load into PyMOL may have long paths
+ and filenames. PyMOL makes it easier to load such files by
+ automatically completing unambiguous paths and filenames when you hit
+ the TAB key. For instance,</P>
+<PRE>
+EXAMPLE 
+ 
+   <B>PyMOL&gt;</B> load cry 
+     
+   # If &quot;crystal.pdb&quot; exists in the current directory, hitting TAB will generate
+    
+   <B>PyMOL&gt;</B> load cystal.pdb          
+</PRE>
+<P>If there is some ambiguity in the filename, PyMOL will complete the
+ name up to the point of ambiguity and then print out the matching files
+ in the directory.</P>
+<H3><A NAME="6_6_3">Automatic Inferences</A></H3>
+<P>There are a small number of &quot;fixed string&quot; arguments to PyMOL
+ commands. For example, in</P>
+<PRE>   
+   <B>PyMOL&gt;</B> show sticks
+</PRE>
+<P>&quot;sticks&quot; is a fixed string argument to<B> show</B>. Because there is
+ only a small set of such arguments to<B> show</B>, PyMOL will infer
+ your meaning even if you only provide it with a few letters. For
+ example</P>
+<PRE>   
+   <B>PyMOL&gt;</B> show st
+</PRE>
+<P>works just as well.</P>
+<P> Keywords are also inferred in this manner, so</P>
+<PRE>   
+   <B>PyMOL&gt;</B> sh st
+   </PRE>
+<P> works too, as long as<B> show</B> is the PyMOL only command starting
+ with &quot;sh&quot;.</P>
+<P>NOTE: PyMOL's command language continues to grow and develop, so it
+ is important to use full-length commands and string arguments in
+ scripts. Otherwise, you could not be sure that a later command or
+ argument would not cause your abbreviation to become ambiguous. For
+ example, &quot;sh st&quot; would no longer work if a<B> shutoff</B> command were
+ added to the PyMOL language.</P>
+<H2><A NAME="6_7"> Other Typed Commands and Help</A></H2>
+<P> This &quot;Getting Started&quot; section used the most frequent PyMOL commands
+ in very brief examples. The section titled &quot;Simple Examples&quot; shows
+ other commands that combine representations, selections and property
+ changes. More complicated examples appear in the section titled
+ &quot;Cookbook and Complex Examples,&quot; and a comprehensive listing of typed
+ commands appears in the section titled &quot;Command and API Reference.&quot;</P>
+<P> To see a list of the keyword commands that are available in PyMOL on
+ your computer screen, type<B> help</B> and &quot;enter&quot; (Typing TAB and
+ &quot;enter&quot; will work too). Add the keyword if you want help on a
+ particular command:</P>
+<PRE>
+SYNTAX
+   
+   help <I>keyword</I>
+      
+EXAMPLE
+   
+   <B>PyMOL&gt;</B> help load			
+</PRE>
+ PyMOL responds by displaying the manual page that discribes the command
+ in the PyMOL viewer. Command line completion works inside of help, so
+ if you don't remember the full keyword, type<B> help</B>, the first
+ character or so of the keyword, and hit TAB. Python will display a list
+ of possible help topics.
+<P> Click inside the viewer and hit escape to toggle back and forth
+ between the display of the manual page or the list of commands and the
+ molecules you have loaded in PyMOL.</P>
+<P> All the keywords that PyMOL understands are listed alphabetically
+ and described in the &quot;Reference&quot; section. PyMOL commands run on top of
+ the Python programming language and may contain Python statements.
+ After you type in a command and hit return, PyMOL will check whether
+ the first word is one of its keywords (or if it can be extended into a
+ keyword). If not, PyMOL will pass the command on to the Python
+ interpreter. PyMOL will return a Python error message if neither a
+ PyMOL nor a Python keyword is recognized.
+<H6><HR>NOTE: This manual is a PyMOL Incentive
+   Product with a One-Year Evaluation Period.  You, your school, or
+   your employer must purchase a PyMOL License & Maintenance
+   Subscription to cover usage beyond the first year.  We trust you
+   to support the PyMOL project via the "honor" system, so please do
+   your part!  See <A HREF="./S0105copylic.html">Usage Terms</A> for
+   more information. <BR>Copyright &copy; 2004 <A
+   HREF="http://www.delanoscientific.com">DeLano Scientific
+   LLC</A>. All Rights Reserved.</H6>
+</P>
+<HR>
+<A HREF="toc.html">Contents</A>
+<A HREF="S0200start.html">Previous</A>
+<A HREF="S0220commands.html">Next</A>
+</BODY>
+</HTML>

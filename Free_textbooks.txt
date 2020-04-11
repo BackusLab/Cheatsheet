@@ -1,0 +1,8 @@
+Free textbooks
+R for data science by Hadley: 
+code on github: https://github.com/hadley/r4ds
+https://r4ds.had.co.nz/
+
+Python datascience handbook 
+https://jakevdp.github.io/PythonDataScienceHandbook/
+code on github: https://github.com/jakevdp/PythonDataScienceHandbook

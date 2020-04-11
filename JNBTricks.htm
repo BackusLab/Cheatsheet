@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# video: http://ogp.me/ns/video# ya: http://webmaster.yandex.ru/vocabularies/">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700,700i" rel="stylesheet">
+  <link rel="profile" href="http://gmpg.org/xfn/11">
+  
+	<title>Advanced Jupyter Notebook Tricks — Part I</title>
+
+<!-- This site is optimized with the Yoast SEO Premium plugin v5.0.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="I love Jupyter notebooks! They&#039;re great for experimenting with new ideas or data sets, and although my notebook &quot;playgrounds&quot; start out as a mess, I use th"/>
+<link rel="canonical" href="https://blog.dominodatalab.com/lesser-known-ways-of-using-notebooks/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Advanced Jupyter Notebook Tricks — Part I" />
+<meta property="og:description" content="I love Jupyter notebooks! They&#039;re great for experimenting with new ideas or data sets, and although my notebook &quot;playgrounds&quot; start out as a mess, I use th" />
+<meta property="og:url" content="https://blog.dominodatalab.com/lesser-known-ways-of-using-notebooks/" />
+<meta property="og:site_name" content="Data Science Blog by Domino" />
+<meta property="article:publisher" content="https://www.facebook.com/dominodatalab/" />
+<meta property="article:tag" content="Jupyter" />
+<meta property="article:tag" content="Python" />
+<meta property="article:section" content="Code" />
+<meta property="article:published_time" content="2015-11-03T16:49:29-08:00" />
+<meta property="article:modified_time" content="2018-12-06T04:05:03-08:00" />
+<meta property="og:updated_time" content="2018-12-06T04:05:03-08:00" />
+<meta property="fb:admins" content="677772754" />
+<meta property="og:image" content="https://blog.dominodatalab.com/wp-content/uploads/2016/05/Screen-Shot-2015-11-02-at-10-28-18-PM.png" />
+<meta property="og:image:width" content="832" />
+<meta property="og:image:height" content="370" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="I love Jupyter notebooks! They&#039;re great for experimenting with new ideas or data sets, and although my notebook &quot;playgrounds&quot; start out as a mess, I use th" />
+<meta name="twitter:title" content="Advanced Jupyter Notebook Tricks — Part I" />
+<meta name="twitter:site" content="@dominodatalab" />
+<meta name="twitter:image" content="https://blog.dominodatalab.com/wp-content/uploads/2016/05/Screen-Shot-2015-11-02-at-10-28-18-PM.png" />
+<meta name="twitter:creator" content="@dominodatalab" />
+<meta property="DC.date.issued" content="2015-11-03T16:49:29-08:00" />
+<!-- / Yoast SEO Premium plugin. -->
+
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Data Science Blog by Domino &raquo; Feed" href="https://blog.dominodatalab.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Data Science Blog by Domino &raquo; Comments Feed" href="https://blog.dominodatalab.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Data Science Blog by Domino &raquo; Advanced Jupyter Notebook Tricks — Part I Comments Feed" href="https://blog.dominodatalab.com/lesser-known-ways-of-using-notebooks/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/blog.dominodatalab.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='dashicons-css'  href='https://blog.dominodatalab.com/wp-includes/css/dashicons.min.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='domino-blog-style-css'  href='https://blog.dominodatalab.com/wp-content/themes/domino-blog/style.css?ver=1538144983' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack-widget-social-icons-styles-css'  href='https://blog.dominodatalab.com/wp-content/plugins/jetpack/modules/widgets/social-icons/social-icons.css?ver=20170506' type='text/css' media='all' />
+<link rel='stylesheet' id='tablepress-default-css'  href='https://blog.dominodatalab.com/wp-content/tablepress-combined.min.css?ver=2' type='text/css' media='all' />
+<link rel='stylesheet' id='addtoany-css'  href='https://blog.dominodatalab.com/wp-content/plugins/add-to-any/addtoany.min.css?ver=1.14' type='text/css' media='all' />
+<style id='addtoany-inline-css' type='text/css'>
+@media screen and (max-width:980px){
+.a2a_floating_style.a2a_vertical_style{display:none;}
+}
+@media screen and (min-width:981px){
+.a2a_floating_style.a2a_default_style{display:none;}
+}
+.a2a_menu, .a2a_menu_find_container { border-radius: 4 !important; border: 2px solid #f7f7f7 !important; padding: 20px 30px !important; font-size: 14px !important; color: #4C89D6 !important;}
+
+.a2a_menu a{
+    color: #7e7e7e !important;
+font-size: 14px !important;
+}
+
+.a2a_menu a:visited {
+    color: #7e7e7e !importnat;
+}
+
+a.a2a_i, i.a2a_i {
+    font-size: 13px !important;
+}
+</style>
+<link rel='stylesheet' id='jetpack_css-css'  href='https://blog.dominodatalab.com/wp-content/plugins/jetpack/css/jetpack.css?ver=6.4.2' type='text/css' media='all' />
+<script type='text/javascript' src='https://blog.dominodatalab.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://blog.dominodatalab.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://blog.dominodatalab.com/wp-content/plugins/jetpack/_inc/build/related-posts/related-posts.min.js?ver=20150408'></script>
+<script type='text/javascript' src='https://blog.dominodatalab.com/wp-content/plugins/add-to-any/addtoany.min.js?ver=1.0'></script>
+<script type="text/javascript">
+	!function(){var analytics=window.analytics=window.analytics||[];if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.0.0";
+		window.analytics.load("4J5DyUNeWZISB5OjcYzDrW0rKcBfjk31");
+	window.analytics.page();
+	  }}();
+</script>
+<link rel='https://api.w.org/' href='https://blog.dominodatalab.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.dominodatalab.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://blog.dominodatalab.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='shortlink' href='https://wp.me/p7zbol-nV' />
+<link rel="alternate" type="application/json+oembed" href="https://blog.dominodatalab.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.dominodatalab.com%2Flesser-known-ways-of-using-notebooks%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://blog.dominodatalab.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fblog.dominodatalab.com%2Flesser-known-ways-of-using-notebooks%2F&#038;format=xml" />
+
+<script data-cfasync="false">
+window.a2a_config=window.a2a_config||{};a2a_config.callbacks=[];a2a_config.overlays=[];a2a_config.templates={};
+a2a_config.prioritize = ["twitter", "facebook", "linkedin", "reddit", "email", "google+",];
+a2a_config.num_services = 6;
+(function(d,s,a,b){a=d.createElement(s);b=d.getElementsByTagName(s)[0];a.async=1;a.src="https://static.addtoany.com/menu/page.js";b.parentNode.insertBefore(a,b);})(document,"script");
+</script>
+
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+<style type='text/css'>img#wpstats{display:none}</style><style type="text/css" id="syntaxhighlighteranchor"></style>
+<link rel="icon" href="https://blog.dominodatalab.com/wp-content/uploads/2016/05/cropped-color-logo-only-512x512-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://blog.dominodatalab.com/wp-content/uploads/2016/05/cropped-color-logo-only-512x512-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://blog.dominodatalab.com/wp-content/uploads/2016/05/cropped-color-logo-only-512x512-180x180.png" />
+<meta name="msapplication-TileImage" content="https://blog.dominodatalab.com/wp-content/uploads/2016/05/cropped-color-logo-only-512x512-270x270.png" />
+</head>
+
+<body class="post-template-default single single-post postid-1483 single-format-standard">
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+	<div id="content" class="site-content">
+
+  <nav class="topnav" id="main-nav">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="nav-wrapper">
+            <div class="nav-left">
+             <a href="https://blog.dominodatalab.com"><img src="https://blog.dominodatalab.com/wp-content/uploads/2018/04/domino-logo-color-white.png" alt="Domino Data Lab Blog" width="130"></a>
+            </div>
+            <div class="nav-right">
+              <a href="https://blog.dominodatalab.com/about" class="menu-first">About</a>
+              <a href="https://www.dominodatalab.com/news/">Company News</a>
+              <a href="https://www.dominodatalab.com?utm_source=blog&utm_campaign=referral&utm_medium=logo&utm_content=" class="menu-space">Domino Data Lab</a>
+              <div class="nav-search"><form role="search" method="get" class="search-form" action="https://blog.dominodatalab.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form></div>
+
+                <div class="menu-mobile-categories">
+                  <a href="https://blog.dominodatalab.com">Data Science</a>
+                  <a href="https://blog.dominodatalab.com/category/code">Code</a>
+                  <a href="https://blog.dominodatalab.com/category/machine-learning">Machine Learning</a>
+                  <a href="https://blog.dominodatalab.com/category/practical-data-science-techniques">Practical Techniques</a>
+                  <a href="https://blog.dominodatalab.com/category/leaders-at-work">Leaders at Work</a>
+                  <a href="https://blog.dominodatalab.com/category/model-management">Model Management</a>
+                  <a href="https://blog.dominodatalab.com/category/engineering">Engineering</a>
+                </div>
+                  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="secondary-nav">
+      <div class="container-fluid">
+        <div class="topics-wrapper">
+          <div><a href="https://blog.dominodatalab.com" class="ds">Data Science</a></div>
+          <div><a href="https://blog.dominodatalab.com/category/code" class="code">Code</a></div>
+          <div><a href="https://blog.dominodatalab.com/category/machine-learning" class="ml">Machine Learning</a></div>
+          <div><a href="https://blog.dominodatalab.com/category/practical-data-science-techniques" class="pt">Practical Techniques</a></div>
+          <div><a href="https://blog.dominodatalab.com/category/leaders-at-work" class="law">Leaders at Work</a></div>
+          <div><a href="https://blog.dominodatalab.com/category/model-management" class="md">Model Management</a></div>
+          <div><a href="https://blog.dominodatalab.com/category/engineering" class="eng">Engineering</a></div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="content" class="site-content">
+
+
+          
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+
+		  <section class="post-featured-photo" style="background:linear-gradient(rgba(18, 50, 99, 0.8), rgba(12, 69, 138, 0.7)), url('https://blog.dominodatalab.com/wp-content/uploads/2016/05/Screen-Shot-2015-11-02-at-10-28-18-PM.png') no-repeat top; background-size:cover;">
+    <div class="container-fluid">
+      <div class="col-md-8 center-block">
+        <div class="content">
+          <h1>Advanced Jupyter Notebook Tricks — Part I</h1>
+          <h4>by <strong><a href="https://blog.dominodatalab.com/author/roos/" title="Posts by roos" rel="author">roos</a></strong> on November 3, 2015</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<section class="container-fluid padding-md">
+  <div class="post-content-wrapper">
+     <div class="row">
+    <div class="col-md-12 col-lg-8"> 
+     <p>I love <a href="http://support.dominodatalab.com/hc/en-us/articles/204856585-Jupyter-Notebooks">Jupyter</a> notebooks! They&#8217;re great for experimenting with new ideas or data sets, and although my notebook &#8220;playgrounds&#8221; start out as a mess, I use them to crystallize a clear idea for building my final projects.</p>
+<p>Jupyter is so great for interactive exploratory analysis that it&#8217;s easy to overlook some of its other powerful features and use cases. I wanted to write a blog post on some of the lesser known ways of using Jupyter — but there are so many that I broke the post into two parts.</p>
+<p>In Part 1, today, I describe how to use Jupyter to create pipelines and reports. In the next post, I will describe how to use Jupyter to create interactive dashboards.</p>
+<p><em>The accompanying project to this blog can be found <a href="https://app.dominodatalab.com/u/r00sj3/jupyter">here</a> on the <a href="https://www.dominodatalab.com/platform/?utm_source=blog&amp;utm_medium=post&amp;utm_campaign=lesser-known-ways-of-using-notebooks">Domino data science platform</a>.</em></p>
+<p><a name="part1"></a></p>
+<h1>Magics</h1>
+<p>You probably know that you can start notebooks with different kernels (e.g., R, Julia) — not just Python. What you might not know is that even within a notebook, you can run different types of code in different cells. With &#8220;magics&#8221;, it is possible to use different languages. The magics that are available vary per notebook kernel, however.</p>
+<p>By running <code>% lsmagic</code> in a cell you get a list of all the available magics. You can use <code>%</code> to start a single-line expression to run with the magics command. Or you can use a double <code>%%</code> to run a multi-line expression.</p>
+<p>Some of my favorites are:</p>
+<ul>
+<li><code>% env</code> to list your environment variables.</li>
+<li><code>!</code>: to run a shell command. E.g., <code>! pip freeze | grep pandas</code> to see what version of pandas is installed.</li>
+<li><code>% matplotlib inline</code> to show matplotlib plots inline the notebook.</li>
+<li><code>% pastebin 'file.py'</code> to upload code to pastebin and get the url returned.</li>
+<li><code>% bash</code> to run cell with bash in a subprocess.<br />
+<img src="/wp-content/uploads/2016/05/bash-1.png" alt="" /></li>
+<li><code>%time</code> will time whatever you evaluate</li>
+<li><code>%%latex</code> to render cell contents as LaTeX<br />
+<img src="/wp-content/uploads/2016/05/Screen-Shot-2015-11-02-at-10-37-59-PM.png" alt="" /></li>
+<li><code>%timeit</code> will time whatever you evaluate multiple times and give you the best, and the average times </li>
+</ul>
+<p><img width="340" src="/wp-content/uploads/2016/05/Screen-Shot-2015-11-02-at-10-28-18-PM.png" style="margin-left: 30px"></p>
+<ul>
+<li><code>%prun</code>, <code>%lprun</code>, <code>%mprun</code> can give you line-by-line breakdown of time and memory usage in a function or script. See a good tutorial <a href="http://pynash.org/2013/03/06/timing-and-profiling/">here</a>.</li>
+<li><code>%% HTML</code>: to render the cell as HTML. So you can even embed an image or other media in your notebook:</li>
+</ul>
+<p><img width="450" src="/wp-content/uploads/2016/05/Screen-Shot-2015-11-02-at-10-20-38-PM.png"></p>
+<p>You can even use magics to mix languages in a single notebook. For example, <a href="https://ipython.org/ipython-doc/2/config/extensions/rmagic.html">rmagics</a> lets you run R code — including plotting — in a Python notebook. Note that you first need to load the <code>rmagics</code> extension.</p>
+<p><img src="/wp-content/uploads/2016/05/Screen-Shot-2015-11-02-at-10-42-44-PM.png" alt="" /></p>
+<p>As described in the <a href="https://ipython.org/ipython-doc/2/config/extensions/rmagic.html">rmagics documentation</a>, you can use <code>%Rpush</code> and <code>%Rpull</code> to move values back and forth between R and Python:</p>
+<p><img src="/wp-content/uploads/2016/05/Screen-Shot-2015-11-02-at-10-45-35-PM.png" alt="" /></p>
+<p>You can find other examples of language-magics online, including <a href="https://github.com/catherinedevlin/ipython-sql">SQL magics</a> and <a href="https://acsgsoc15.wordpress.com/2015/04/07/using-cython-in-ipython/">cython magics</a>. You can read about more common magics <a href="https://ipython.org/ipython-doc/3/interactive/magics.html">here</a>. Seriously, you could spend an entire day learning about these!</p>
+<h3>Pipelines</h3>
+<p>Magics are handy on their own, but they really shine when you combine them. These functions can help you create pipelines in one visual flow by combining steps in different languages. Getting familiar with magics gives you the power to use the most efficient solution per subtask and bind them together for your project.</p>
+<p>When used this way, Jupyter notebooks became &#8220;visual shell scripts&#8221; tailored for data science work. Each cell can be a step in a pipeline that can use a high-level language directly (e.g., R, Python), or a lower-level shell command. At the same time, your &#8220;script&#8221; can also contain nicely formatted documentation and visual output from the steps in the process. It can even document its own performance, automatically recording CPU and memory utilization in its output.</p>
+<p><a name="part2"></a></p>
+<h1>Batch, scheduling, and reports</h1>
+<p>Like any other Python script it is possible to also run your notebook in batch mode. By using <a href="https://ipython.org/ipython-doc/1/interactive/nbconvert.html">nbconvert</a>, you can calculate an entire notebook non-interactively, saving it in place or to a variety of other formats.</p>
+<p>This capability makes notebooks a powerful tool for ETL and for reporting. For a report, just schedule your notebooks to run on a recurring basis automatically and update its contents or email its results to colleagues. Or using the magics techniques described above, a notebook can implement a data pipeline or ETL task to run on an automatic schedule, as well.</p>
+<h3>Scheduled dashboard</h3>
+<p>Let&#8217;s say that you have to regularly send a <a href="http://blog.dominodatalab.com/creating-interactive-crime-maps-with-folium/">folium</a> map to your colleague&#8217;s email with all the earthquakes of the past day.</p>
+<p>To be able to do that, you first need an earthquake data set that updates regularly (at least daily). A data feed that updates every 5 minutes can be found <a href="http://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php">here</a>. Then, you can use Jupyter to write the <a href="https://app.dominodatalab.com/u/r00sj3/jupyter/view/batchdemo.ipynb">code</a> to load this data and create the map.<br />
+<img src="/wp-content/uploads/2016/05/Screen-Shot-2015-11-02-at-11-15-49-PM.png" alt="" /></p>
+<p><a href="https://www.dominodatalab.com?utm_source=blog&amp;utm_medium=post&amp;utm_campaign=lesser-known-ways-of-using-notebooks">Domino</a> lets you <a href="http://support.dominodatalab.com/hc/en-us/articles/204843165-Scheduling-Runs">schedule</a> any script to run on a regular basis, and this works for ipynb files just like anything else. When it runs a scheduled execution of <code>batchdemo.ipynb</code>, Domino will calculate the notebook and update its cells with the newest results.</p>
+<p><img src="/wp-content/uploads/2016/05/Screen-Shot-2015-11-02-at-11-39-04-PM.png" alt="" /></p>
+<p>Collaborators can visit the page to view the <a href="https://app.dominodatalab.com/u/r00sj3/jupyter/view/batchdemo.ipynb">updated notebook</a> in the browser — without running a Jupyter server. So your notebook has become as a dashboard that&#8217;s always up to date.</p>
+<p><img src="/wp-content/uploads/2016/05/Screen-Shot-2015-11-02-at-11-57-48-PM.png" alt="" /></p>
+<h3>Scheduled dashboard with magics and HTML export</h3>
+<p>A step further is combining magics pipelining and turning the whole notebook into a HTML report. This next <a href="https://app.dominodatalab.com/u/r00sj3/jupyter/view/pipelinedashboard.ipynb">example</a> shows how you can first use a shell script to retrieve a webpage (http://www.sfgate.com) that you visualize in a wordcloud with Python. Then, as part of the scheduled run, it is converted to a HTML page with the result of the run. You can set up your scheduled runs to automatically email any results (e.g., your notebook rendered as HTML) to your colleagues.</p>
+<p>When you finish your notebook with inline visualizations, create a <a href="https://app.dominodatalab.com/u/r00sj3/jupyter/view/dashboard.sh">shell script</a> that is similar to:</p>
+<pre class="brush: plain; title: ; notranslate" title="">
+ipython nbconvert --to html pipelinedashboard.ipynb
+</pre>
+<p>After scheduling this shell script, the result will be a <a href="https://app.dominodatalab.com/u/r00sj3/jupyter/raw/latest/pipelinedashboard.html">regular HTML version</a> of the last run of your notebook.</p>
+<p><iframe style="border: 1px solid #ccc" width="100%" height="400" src="https://app.dominodatalab.com/u/r00sj3/jupyter/raw/latest/pipelinedashboard.html?inline=true"></iframe></p>
+<hr />
+<p>Stay tuned for Part II, where we&#8217;ll explore creating interactive dashboards in Jupyter notebooks.</p>
+
+<div id='jp-relatedposts' class='jp-relatedposts' >
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div><div class="addtoany_share_save_container addtoany_content addtoany_content_bottom"><div class="addtoany_header">Share</div><div class="a2a_kit a2a_kit_size_32 addtoany_list" data-a2a-url="https://blog.dominodatalab.com/lesser-known-ways-of-using-notebooks/" data-a2a-title="Advanced Jupyter Notebook Tricks — Part I"><a class="a2a_button_twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fblog.dominodatalab.com%2Flesser-known-ways-of-using-notebooks%2F&amp;linkname=Advanced%20Jupyter%20Notebook%20Tricks%20%E2%80%94%20Part%20I" title="Twitter" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_linkedin" href="https://www.addtoany.com/add_to/linkedin?linkurl=https%3A%2F%2Fblog.dominodatalab.com%2Flesser-known-ways-of-using-notebooks%2F&amp;linkname=Advanced%20Jupyter%20Notebook%20Tricks%20%E2%80%94%20Part%20I" title="LinkedIn" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_google_gmail" href="https://www.addtoany.com/add_to/google_gmail?linkurl=https%3A%2F%2Fblog.dominodatalab.com%2Flesser-known-ways-of-using-notebooks%2F&amp;linkname=Advanced%20Jupyter%20Notebook%20Tricks%20%E2%80%94%20Part%20I" title="Google Gmail" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share"></a></div></div>    </div>
+
+    <div class="col-md-12 col-lg-4 sidebar-content">
+      
+<aside id="secondary" class="widget-area">
+  <div class="topics-container">
+       <h3>Topics</h3>
+        <ul><li><a href="https://blog.dominodatalab.com/tag/jupyter/" rel="tag">Jupyter</a></li><li><a href="https://blog.dominodatalab.com/tag/python/" rel="tag">Python</a></li></ul>      </div>
+
+      <div class="recent-stories-container">
+          		<section id="recent-posts-3" class="widget widget_recent_entries">		<h2>Recent Posts</h2>		<ul>
+											<li>
+					<a href="https://blog.dominodatalab.com/themes-conferences-per-pacoid-episode-4/">Themes and Conferences per Pacoid, Episode 4</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/shap-lime-python-libraries-part-1-great-explainers-pros-cons/">SHAP and LIME Python Libraries: Part 1 &#8211; Great Explainers, with Pros and Cons to Both</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/making-pyspark-work-spacy-overcoming-serialization-errors/">Making PySpark Work with spaCy: Overcoming Serialization Errors</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/collaboration-data-science-data-engineering-true-false/">Collaboration Between Data Science and Data Engineering: True or False?</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/themes-conferences-per-pacoid-episode-3/">Themes and Conferences per Pacoid, Episode 3</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/growing-data-scientists-manager-roles/">Growing Data Scientists Into Manager Roles</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/domino-3-0-new-features-and-user-experiences-to-help-the-world-run-on-models/">Domino 3.0: New Features and User Experiences to Help the World Run on Models</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/justified-algorithmic-forgiveness/">Justified Algorithmic Forgiveness?</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/themes-and-conferences-per-pacoid-episode-2/">Themes and Conferences per Pacoid, Episode 2</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/trust-in-lime-local-interpretable-model-agnostic-explanations/">Trust in LIME: Yes, No, Maybe So? </a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/item-response-theory-r-survey-analysis/">Item Response Theory in R for Survey Analysis</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/benchmarking-nvidia-cuda-9-amazon-ec2-p3-instances-using-fashion-mnist/">Benchmarking NVIDIA CUDA 9 and Amazon EC2 P3 Instances Using Fashion MNIST</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/themes-conferences-per-pacoid-episode-1/">Themes and Conferences per Pacoid, Episode 1</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/make-machine-learning-interpretability-rigorous/">Make Machine Learning Interpretability More Rigorous</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/learn-reproducibility-crisis-science/">Learn from the Reproducibility Crisis in Science</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/feature-engineering-framework-techniques/">Feature Engineering: A Framework and Techniques </a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/three-simple-worrying-stats-problems/">Three Simple Worrying Stats Problems</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/past-present-future-myths-data-science/">The Past/Present/Future + Myths of Data Science</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/classify-things-multiple-labels/">Classify all the Things (with Multiple Labels)</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/importance-community-led-open-source/">On the Importance of Community-Led Open Source</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/model-management-era-model-driven-business/">Model Management and the Era of the Model-Driven Business</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/put-models-core-business-processes/">Put Models at the Core of Business Processes</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/large-visualizations-canvasxpress/">Large Visualizations in canvasXpress</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/avoiding-data-science-hype-bubble/">Avoiding a Data Science Hype Bubble</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/model-evaluation/">Model Evaluation</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/data-science-models-build-on-each-other/">Data Science Models Build on Each Other</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/ingesting-kate-crawfords-trouble-with-bias/">On Ingesting Kate Crawford’s “The Trouble with Bias”</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/data-science-more-than-machine-learning/">Data Science is more than Machine Learning </a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/data-scientist-programmer-mutually-exclusive/">Data Scientist? Programmer? Are They Mutually Exclusive?</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/bias-breaking-chain-holds-us-back/">Bias: Breaking the Chain that Holds Us Back</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/machine-learning-reproducibility-crisis/">The Machine Learning Reproducibility Crisis</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/managing-data-science-as-a-capability/">Managing Data Science as a Capability</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/docker-but-for-data/">Docker, but for Data</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/domino-honored-named-visionary-gartner-magic-quadrant/">Domino Honored to Be Named Visionary in Gartner Magic Quadrant</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/become-full-stack-data-science-company/">Become A Full Stack Data Science Company</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/0-05-arbitrary-cut-off-turning-fails-wins/">0.05 is an Arbitrary Cut Off: &#8220;Turning Fails into Wins”</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/data-science-use-cases/">Data Science Use Cases</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/building-domino-web-app-dash/">Building a Domino Web App with Dash</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/bias-policing-analysis-traffic-stop-data/">Racial Bias in Policing: An Analysis of Illinois Traffic Stop Data</a>
+									</li>
+											<li>
+					<a href="https://blog.dominodatalab.com/data-quality-analytics/">Data Quality Analytics</a>
+									</li>
+					</ul>
+		</section>      </div>
+
+      <div class="signup-container">
+        <section id="custom_html-2" class="widget_text widget widget_custom_html"><div class="textwidget custom-html-widget"><h2>
+	Doing Data Science?
+</h2>
+<p>
+	Get our regular data science news, insights, tutorials, and more!
+</p>
+<a data-sumome-listbuilder-id="89e0c49c-5a72-4c4d-8557-bc379448ec17"><button class="btn btn--white--fill">Get Data Science Updates</button></a>
+
+
+</div></section>      </div>
+</aside>
+    </div>
+  </div>
+  </div>
+</section>
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+</div><!-- #content -->
+
+<footer class="container-fluid padding-top-sm">
+  <div class="row divider">
+    <div class="col-md-12 center-block padding-sm text-center">
+      <ul>
+        <li class="divider--right"><a href="https://blog.dominodatalab.com/about">About the Blog</a></li>
+        <li class="divider--right"><a href="https://www.dominodatalab.com/blog/" target="_blank">Company News</a></li>
+        <li class="divider--right"><a href="https://www.dominodatalab.com?utm_source=blog&utm_campaign=referral&utm_medium=logo&utm_content=" target="_blank">Domino Data Lab</a></li>
+        <li class="social-icons"><a href="https://twitter.com/dominodatalab" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16"><g transform="translate(0, 0)"><path fill="#444444" d="M16,3c-0.6,0.3-1.2,0.4-1.9,0.5c0.7-0.4,1.2-1,1.4-1.8c-0.6,0.4-1.3,0.6-2.1,0.8c-0.6-0.6-1.5-1-2.4-1 C9.3,1.5,7.8,3,7.8,4.8c0,0.3,0,0.5,0.1,0.7C5.2,5.4,2.7,4.1,1.1,2.1c-0.3,0.5-0.4,1-0.4,1.7c0,1.1,0.6,2.1,1.5,2.7 c-0.5,0-1-0.2-1.5-0.4c0,0,0,0,0,0c0,1.6,1.1,2.9,2.6,3.2C3,9.4,2.7,9.4,2.4,9.4c-0.2,0-0.4,0-0.6-0.1c0.4,1.3,1.6,2.3,3.1,2.3 c-1.1,0.9-2.5,1.4-4.1,1.4c-0.3,0-0.5,0-0.8,0c1.5,0.9,3.2,1.5,5,1.5c6,0,9.3-5,9.3-9.3c0-0.1,0-0.3,0-0.4C15,4.3,15.6,3.7,16,3z"></path></g></svg></a>
+        
+        <a href="https://www.linkedin.com/company/domino-data-lab" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px" height="16px" viewBox="0 0 16 16"><g transform="translate(0, 0)"><path fill="#444444" d="M15.3,0H0.7C0.3,0,0,0.3,0,0.7v14.7C0,15.7,0.3,16,0.7,16h14.7c0.4,0,0.7-0.3,0.7-0.7V0.7 C16,0.3,15.7,0,15.3,0z M4.7,13.6H2.4V6h2.4V13.6z M3.6,5C2.8,5,2.2,4.3,2.2,3.6c0-0.8,0.6-1.4,1.4-1.4c0.8,0,1.4,0.6,1.4,1.4 C4.9,4.3,4.3,5,3.6,5z M13.6,13.6h-2.4V9.9c0-0.9,0-2-1.2-2c-1.2,0-1.4,1-1.4,2v3.8H6.2V6h2.3v1h0c0.3-0.6,1.1-1.2,2.2-1.2 c2.4,0,2.8,1.6,2.8,3.6V13.6z"></path></g></svg></a>
+      </li>
+      </ul>
+      <!-- <h6>Copyright 2018 Domino Data Lab</h6> -->
+    </div>
+  </div>
+</footer>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("main-nav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+
+<div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_vertical_style" style="left:0px;top:200px;background-color:transparent;"><a class="a2a_button_twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fblog.dominodatalab.com%2Flesser-known-ways-of-using-notebooks%2F&amp;linkname=Advanced%20Jupyter%20Notebook%20Tricks%20%E2%80%94%20Part%20I" title="Twitter" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_linkedin" href="https://www.addtoany.com/add_to/linkedin?linkurl=https%3A%2F%2Fblog.dominodatalab.com%2Flesser-known-ways-of-using-notebooks%2F&amp;linkname=Advanced%20Jupyter%20Notebook%20Tricks%20%E2%80%94%20Part%20I" title="LinkedIn" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_google_gmail" href="https://www.addtoany.com/add_to/google_gmail?linkurl=https%3A%2F%2Fblog.dominodatalab.com%2Flesser-known-ways-of-using-notebooks%2F&amp;linkname=Advanced%20Jupyter%20Notebook%20Tricks%20%E2%80%94%20Part%20I" title="Google Gmail" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share"></a></div><div class="a2a_kit a2a_kit_size_32 a2a_floating_style a2a_default_style" style="bottom:0px;left:0px;background-color:transparent;"><a class="a2a_button_twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fblog.dominodatalab.com%2Flesser-known-ways-of-using-notebooks%2F&amp;linkname=Advanced%20Jupyter%20Notebook%20Tricks%20%E2%80%94%20Part%20I" title="Twitter" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_linkedin" href="https://www.addtoany.com/add_to/linkedin?linkurl=https%3A%2F%2Fblog.dominodatalab.com%2Flesser-known-ways-of-using-notebooks%2F&amp;linkname=Advanced%20Jupyter%20Notebook%20Tricks%20%E2%80%94%20Part%20I" title="LinkedIn" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_google_gmail" href="https://www.addtoany.com/add_to/google_gmail?linkurl=https%3A%2F%2Fblog.dominodatalab.com%2Flesser-known-ways-of-using-notebooks%2F&amp;linkname=Advanced%20Jupyter%20Notebook%20Tricks%20%E2%80%94%20Part%20I" title="Google Gmail" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save addtoany_share" href="https://www.addtoany.com/share"></a></div><script type='text/javascript' src='https://blog.dominodatalab.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b'></script>
+<script type='text/javascript' src='https://blog.dominodatalab.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js?ver=3.0.9b'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "https://blog.dominodatalab.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.getElementsByTagName("head")[0].insertBefore( corecss, document.getElementById("syntaxhighlighteranchor") );
+		var themecssurl = "https://blog.dominodatalab.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		//document.getElementById("syntaxhighlighteranchor").appendChild(themecss);
+		document.getElementsByTagName("head")[0].insertBefore( themecss, document.getElementById("syntaxhighlighteranchor") );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['pad-line-numbers'] = true;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.defaults['wrap-lines'] = false;
+	SyntaxHighlighter.all();
+</script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201850'></script>
+<script type='text/javascript' src='https://blog.dominodatalab.com/wp-content/themes/domino-blog/js/navigation.js?ver=20151215'></script>
+<script type='text/javascript' src='https://blog.dominodatalab.com/wp-content/themes/domino-blog/js/skip-link-focus-fix.js?ver=20151215'></script>
+<script type='text/javascript' src='https://blog.dominodatalab.com/wp-includes/js/comment-reply.min.js?ver=4.9.8'></script>
+<script type='text/javascript' src='https://blog.dominodatalab.com/wp-includes/js/wp-embed.min.js?ver=4.9.8'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-201850.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:6.4.2',blog:'111819625',post:'1483',tz:'-8',srv:'blog.dominodatalab.com'} ]);
+	_stq.push([ 'clickTrackerInit', '111819625', '1483' ]);
+</script>
+
+</body>
+</html>

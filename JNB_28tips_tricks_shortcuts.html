@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>28 Jupyter Notebook tips, tricks and shortcuts</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/themes/prism.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/blog/assets/built/screen.css?v=876a8c469c" />
+    <link rel="stylesheet" type="text/css" href="/blog/assets/built/custom.css?v=876a8c469c" />
+
+        <meta name="description" content="Jupyter Notebook is a powerful tool for data analysis.  We share 28 tips, tricks, and shortcuts to turn you into a Jupyter power user!" />
+    <link rel="shortcut icon" href="/blog/favicon.png" type="image/png" />
+    <link rel="canonical" href="https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="Dataquest Data Science Blog" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="28 Jupyter Notebook tips, tricks and shortcuts" />
+    <meta property="og:description" content="Jupyter Notebook is a powerful tool for data analysis.  We share with you 28 tips, tricks, and shortcuts to turn you into a Jupyter power user!" />
+    <meta property="og:url" content="https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/" />
+    <meta property="article:published_time" content="2016-10-12T00:00:00.000Z" />
+    <meta property="article:modified_time" content="2018-02-06T16:24:14.000Z" />
+    <meta property="article:tag" content="Jupyter" />
+    <meta property="article:tag" content="Learn Python" />
+    <meta property="article:tag" content="Learn R" />
+    <meta property="article:tag" content="Resources" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/dataquestio/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="28 Jupyter Notebook tips and shortcuts" />
+    <meta name="twitter:description" content="#Jupyter Notebook is a powerful tool for data analysis. We share 28 tips, tricks, and shortcuts to turn you into a 
+power user!" />
+    <meta name="twitter:url" content="https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/" />
+    <meta name="twitter:image" content="https://www.dataquest.io/blog/content/images/2017/11/jupyter_tips.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Josh Devlin" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Jupyter, Learn Python, Learn R, Resources" />
+    <meta name="twitter:site" content="@dataquestio" />
+    <meta name="twitter:creator" content="@jaypeedevlin" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Dataquest Data Science Blog",
+        "logo": "https://www.dataquest.io/blog/content/images/2017/12/Logo-On-Dark--2-.png"
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Josh Devlin",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://www.dataquest.io/blog/content/images/2017/12/josh_profile.png",
+            "width": 347,
+            "height": 347
+        },
+        "url": "https://www.dataquest.io/blog/author/josh/",
+        "sameAs": [
+            "https://twitter.com/jaypeedevlin"
+        ]
+    },
+    "headline": "28 Jupyter Notebook tips, tricks and shortcuts",
+    "url": "https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/",
+    "datePublished": "2016-10-12T00:00:00.000Z",
+    "dateModified": "2018-02-06T16:24:14.000Z",
+    "keywords": "Jupyter, Learn Python, Learn R, Resources",
+    "description": "Jupyter Notebook is a powerful tool for data analysis.  We share with you 28 tips, tricks, and shortcuts to turn you into a Jupyter power user!",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.dataquest.io/blog/"
+    }
+}
+    </script>
+
+    <script src="/blog/public/ghost-sdk.min.js?v=876a8c469c"></script>
+<script>
+ghost.init({
+	clientId: "ghost-frontend",
+	clientSecret: "2e84fde6d9c4"
+});
+</script>
+    <meta name="generator" content="Ghost 1.25" />
+    <link rel="alternate" type="application/rss+xml" title="Dataquest Data Science Blog" href="https://www.dataquest.io/blog/rss/" />
+    <meta property="fb:pages" content="937097596357357" />
+<style>
+    
+    @media (min-width:899px){ .home-template .inner {margin-top: 40px;!important;}}
+</style>
+
+
+</head>
+<body class="post-template tag-jupyter tag-python tag-r tag-resources">
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="site-header outer">
+    <div class="inner">
+        <nav class="site-nav">
+    <div class="site-nav-left">
+                <a class="site-nav-logo" href="https://www.dataquest.io/?utm_source=blog&utm_medium=logo&utm_term=blog%20readers&utm_content=image"><img src="/blog/content/images/2017/12/Logo-On-Dark--2-.png" alt="Dataquest Data Science Blog" /></a>
+            <ul class="nav" role="menu">
+    <li class="nav-blog" role="menuitem"><a href="https://www.dataquest.io/blog/">Blog</a></li>
+    <li class="nav-write-for-dataquest" role="menuitem"><a href="https://www.dataquest.io/blog/write-for-dataquest/">Write for Dataquest</a></li>
+</ul>
+
+    </div>
+    <div class="site-nav-right">
+        <div class="social-links">
+                <a class="social-link social-link-fb" href="https://www.facebook.com/dataquestio/" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+</a>
+                <a class="social-link social-link-tw" href="https://twitter.com/dataquestio" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+</a>
+        </div>
+            <a class="rss-button" href="http://cloud.feedly.com/#subscription/feed/https://www.dataquest.io/blog/rss/" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="6.18" cy="17.82" r="2.18"/><path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"/></svg>
+</a>
+    </div>
+</nav>
+    </div>
+</header>
+
+
+<main id="site-main" class="site-main outer" role="main">
+    <div class="inner">
+
+        <article class="post-full post tag-jupyter tag-python tag-r tag-resources no-image">
+
+            <header class="post-full-header">
+                <section class="post-full-meta">
+                    <time class="post-full-meta-date" datetime="2016-10-11">11 October 2016</time>
+                        <span class="date-divider">/</span> <a href="/blog/tag/jupyter/">Jupyter</a>
+                </section>
+                <h1 class="post-full-title">28 Jupyter Notebook tips, tricks, and shortcuts</h1>
+            </header>
+
+
+            <section class="post-full-content">
+                <div class="kg-card-markdown"><p><em>This post is based on a post that originally appeared on <a href="http://arogozhnikov.github.io/2016/09/10/jupyter-features.html">Alex Rogozhnikov's blog, 'Brilliantly Wrong'</a>.</em></p>
+<p><em>We have expanded the post and will continue to do so over time — if you have a suggestion please <a href="https://twitter.com/dataquestio">let us know</a>.  Thanks to Alex for graciously letting us republish his work here.</em></p>
+<h2 id="jupyternotebook">Jupyter Notebook</h2>
+<p>Jupyter notebook, formerly known as the IPython notebook, is a flexible tool that helps you create readable analyses, as you can keep code, images, comments, formulae and plots together.</p>
+<p>Jupyter is quite extensible, supports many programming languages and is easily hosted on your computer or on almost any server — you only need to have ssh or http access. Best of all, it's completely free.</p>
+<img src="/blog/content/images/interface-screenshot.png">
+<p><i>The Jupyter interface.</i></p>
+<p>Project Jupyter was born out of the IPython project as the project evolved to become a notebook that could support multiple languages - hence its historical name as the IPython notebook. The name Jupyter is an indirect acronyum of the three core languages it was designed for: <strong>JU</strong>lia, <strong>PYT</strong>hon, and <strong>R</strong> and is inspired by the planet Jupiter.</p>
+<p>When working with Python in Jupyter, the IPython kernel is used, which gives us some handy access to IPython features from within our Jupyter notebooks (more on that later!)</p>
+<p>We're going to show you 28 tips and tricks to make your life working with Jupyter easier.</p>
+<h2 id="1keyboardshortcuts">1. Keyboard Shortcuts</h2>
+<p>As any power user knows, keyboard shortcuts will save you lots of time.  Jupyter stores a list of keybord shortcuts under the menu at the top: <code>Help &gt; Keyboard Shortcuts</code>, or by pressing <code>H</code> in command mode (more on that later).  It's worth checking this each time you update Jupyter, as more shortcuts are added all the time.</p>
+<p>Another way to access keyboard shortcuts, and a handy way to learn them is to use the command palette: <code>Cmd + Shift + P</code> (or <code>Ctrl + Shift + P</code> on Linux and Windows).  This dialog box helps you run any command by name - useful if you don't know the keyboard shortcut for an action or if what you want to do does not have a keyboard shortcut.  The functionality is similar to Spotlight search on a Mac, and once you start using it you'll wonder how you lived without it!</p>
+<div class="gif-container">
+    <img class='gif'
+    src="/blog/content/images/command-palette.gif">
+    <img class='preview'
+    src="/blog/content/images/command-palette.png">
+</div>
+<p><i>The command palette.</i></p>
+<p>Some of my favorites:</p>
+<ul>
+<li><code>Esc</code> will take you into command mode where you can navigate around your notebook with arrow keys.</li>
+<li>While in command mode:
+<ul>
+<li><code>A</code> to insert a new cell above the current cell, <code>B</code> to insert a new cell below.</li>
+<li><code>M</code> to change the current cell to Markdown, <code>Y</code> to change it back to code</li>
+<li><code>D + D</code> (press the key twice) to delete the current cell</li>
+</ul>
+</li>
+<li><code>Enter</code> will take you from command mode back into edit mode for the given cell.</li>
+<li><code>Shift + Tab</code> will show you the Docstring (documentation) for the the object you have just typed in a code cell - you can keep pressing this short cut to cycle through a few modes of documentation.</li>
+<li><code>Ctrl + Shift + -</code> will split the current cell into two from where your cursor is.</li>
+<li><code>Esc + F</code> Find and replace on your code but not the outputs.</li>
+<li><code>Esc + O</code> Toggle cell output.</li>
+<li>Select Multiple Cells:
+<ul>
+<li><code>Shift + J</code> or <code>Shift + Down</code> selects the next sell in a downwards direction. You can also select sells in an upwards direction by using <code>Shift + K</code> or <code>Shift + Up</code>.</li>
+<li>Once cells are selected, you can then delete / copy / cut / paste / run them as a batch. This is helpful when you need to move parts of a notebook.</li>
+<li>You can also use <code>Shift + M</code> to merge multiple cells.</li>
+</ul>
+</li>
+</ul>
+<div class="gif-container">
+    <img class='gif'
+    src="/blog/content/images/multi-merge.gif" />
+    <img class='preview'
+    src="/blog/content/images/multi-merge.png"/>
+</div>
+<p><i>Merging multiple cells.</i></p>
+<h2 id="2prettydisplayofvariables">2. Pretty Display of Variables</h2>
+<p>The first part of this is pretty widely known. By finishing a Jupyter cell with the name of a variable or unassigned output of a statement, Jupyter will display that variable without the need for a print statement.  This is especially useful when dealing with Pandas DataFrames, as the output is neatly formatted into a table.</p>
+<p>What is known less, is that you can alter a modify the <code>ast_note_interactivity</code> kernel option to make jupyter do this for any variable or statement on it's own line, so you can see the value of multiple statements at once.</p>
+<pre><code class="language-python">from IPython.core.interactiveshell import InteractiveShell
+InteractiveShell.ast_node_interactivity = &quot;all&quot;
+</code></pre>
+<pre><code>from pydataset import data
+quakes = data('quakes')
+quakes.head()
+quakes.tail()
+</code></pre>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>lat</th>
+<th>long</th>
+<th>depth</th>
+<th>mag</th>
+<th>stations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>1</th>
+<td>-20.42</td>
+<td>181.62</td>
+<td>562</td>
+<td>4.8</td>
+<td>41</td>
+</tr>
+<tr>
+<th>2</th>
+<td>-20.62</td>
+<td>181.03</td>
+<td>650</td>
+<td>4.2</td>
+<td>15</td>
+</tr>
+<tr>
+<th>3</th>
+<td>-26.00</td>
+<td>184.10</td>
+<td>42</td>
+<td>5.4</td>
+<td>43</td>
+</tr>
+<tr>
+<th>4</th>
+<td>-17.97</td>
+<td>181.66</td>
+<td>626</td>
+<td>4.1</td>
+<td>19</td>
+</tr>
+<tr>
+<th>5</th>
+<td>-20.42</td>
+<td>181.96</td>
+<td>649</td>
+<td>4.0</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>lat</th>
+<th>long</th>
+<th>depth</th>
+<th>mag</th>
+<th>stations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>996</th>
+<td>-25.93</td>
+<td>179.54</td>
+<td>470</td>
+<td>4.4</td>
+<td>22</td>
+</tr>
+<tr>
+<th>997</th>
+<td>-12.28</td>
+<td>167.06</td>
+<td>248</td>
+<td>4.7</td>
+<td>35</td>
+</tr>
+<tr>
+<th>998</th>
+<td>-20.13</td>
+<td>184.20</td>
+<td>244</td>
+<td>4.5</td>
+<td>34</td>
+</tr>
+<tr>
+<th>999</th>
+<td>-17.40</td>
+<td>187.80</td>
+<td>40</td>
+<td>4.5</td>
+<td>14</td>
+</tr>
+<tr>
+<th>1000</th>
+<td>-21.59</td>
+<td>170.56</td>
+<td>165</td>
+<td>6.0</td>
+<td>119</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>If you want to set this behaviour for all instances of Jupyter (Notebook and Console), simply create a file <code>~/.ipython/profile_default/ipython_config.py</code> with the lines below.</p>
+<pre><code class="language-python">c = get_config()
+
+# Run all nodes interactively
+c.InteractiveShell.ast_node_interactivity = &quot;all&quot;
+</code></pre>
+<h2 id="3easylinkstodocumentation">3. Easy links to documentation</h2>
+<p>Inside the <code>Help</code> menu you'll find handy links to the online documentation for common libraries including NumPy, Pandas, SciPy and Matplotlib.</p>
+<p>Don't forget also that by prepending a library, method or variable with <code>?</code>, you can access the Docstring for quick reference on syntax.</p>
+<pre><code class="language-python">?str.replace()
+</code></pre>
+<pre><code>Docstring:
+S.replace(old, new[, count]) -&gt; str
+
+Return a copy of S with all occurrences of substring
+old replaced by new.  If the optional argument count is
+given, only the first count occurrences are replaced.
+Type:      method_descriptor
+</code></pre>
+<h2 id="4plottinginnotebooks">4. Plotting in notebooks</h2>
+<p>There are many options for generating plots in your notebooks.</p>
+<ul>
+<li><a href="http://matplotlib.org/">matplotlib</a> (the de-facto standard), activated with <code>%matplotlib inline</code> - Here's a Dataquest <a href="https://www.dataquest.io/blog/matplotlib-tutorial/">Matplotlib Tutorial</a>.</li>
+<li><code>%matplotlib notebook</code> provides interactivity but can be a little slow, since rendering is done server-side.</li>
+<li><a href="http://seaborn.pydata.org/">Seaborn</a> is built over Matplotlib and makes building more attractive plots easier.  Just by importing Seaborn, your matplotlib plots are made 'prettier' without any code modification.</li>
+<li><a href="https://github.com/mpld3/mpld3">mpld3</a> provides alternative renderer (using d3) for matplotlib code. Quite nice, though incomplete.</li>
+<li><a href="http://bokeh.pydata.org/en/latest/">bokeh</a> is a better option for building interactive plots.</li>
+<li><a href="https://plot.ly/">plot.ly</a> can generate nice plots - this used to be a paid service only but was recently open sourced.</li>
+<li><a href="https://github.com/altair-viz/altair">Altair</a> is a relatively new declarative visualization library for Python.  It's easy to use and makes great looking plots, however the ability to customize those plots is not nearly as powerful as in Matplotlib.</li>
+</ul>
+<img src="/blog/content/images/bokeh.png">
+<p><i>The Jupyter interface.</i></p>
+<h2 id="5ipythonmagiccommands">5. IPython Magic Commands</h2>
+<p>The <code>%matplotlib inline</code> you saw above was an example of a <em>IPython Magic</em> command. Being based on the IPython kernel, Jupyter has access to all the Magics from the IPython kernel, and they can make your life a lot easier!</p>
+<pre><code class="language-python"># This will list all magic commands
+%lsmagic
+</code></pre>
+<pre><code>Available line magics:
+%alias  %alias_magic  %autocall  %automagic  %autosave  %bookmark  %cat  %cd  %clear  %colors  %config  %connect_info  %cp  %debug  %dhist  %dirs  %doctest_mode  %ed  %edit  %env  %gui  %hist  %history  %killbgscripts  %ldir  %less  %lf  %lk  %ll  %load  %load_ext  %loadpy  %logoff  %logon  %logstart  %logstate  %logstop  %ls  %lsmagic  %lx  %macro  %magic  %man  %matplotlib  %mkdir  %more  %mv  %notebook  %page  %pastebin  %pdb  %pdef  %pdoc  %pfile  %pinfo  %pinfo2  %popd  %pprint  %precision  %profile  %prun  %psearch  %psource  %pushd  %pwd  %pycat  %pylab  %qtconsole  %quickref  %recall  %rehashx  %reload_ext  %rep  %rerun  %reset  %reset_selective  %rm  %rmdir  %run  %save  %sc  %set_env  %store  %sx  %system  %tb  %time  %timeit  %unalias  %unload_ext  %who  %who_ls  %whos  %xdel  %xmode
+
+Available cell magics:
+%%!  %%HTML  %%SVG  %%bash  %%capture  %%debug  %%file  %%html  %%javascript  %%js  %%latex  %%perl  %%prun  %%pypy  %%python  %%python2  %%python3  %%ruby  %%script  %%sh  %%svg  %%sx  %%system  %%time  %%timeit  %%writefile
+
+Automagic is ON, % prefix IS NOT needed for line magics.
+</code></pre>
+<p>I recommend browsing <a href="http://ipython.readthedocs.io/en/stable/interactive/magics.html">the documentation for all IPython Magic commands</a> as you'll no doubt find some that work for you.  A few of my favorites are below:</p>
+<h3 id="6ipythonmagicenvsetenvironmentvariables">6. IPython Magic - %env: Set Environment Variables</h3>
+<p>You can manage environment variables of your notebook without restarting the jupyter server process. Some libraries (like theano) use environment variables to control behavior, %env is the most convenient way.</p>
+<pre><code class="language-python"># Running %env without any arguments
+# lists all environment variables
+
+# The line below sets the environment
+# variable OMP_NUM_THREADS
+%env OMP_NUM_THREADS=4
+</code></pre>
+<pre><code>env: OMP_NUM_THREADS=4
+</code></pre>
+<h3 id="7ipythonmagicrunexecutepythoncode">7. IPython Magic - %run:  Execute python code</h3>
+<p><code>%run</code> can execute python code from .py files - this is well-documented behavior. Lesser known is the fact that it can also execute other jupyter notebooks, which can quite useful.</p>
+<p>Note that using <code>%run</code> is not the same as importing a python module.</p>
+<pre><code class="language-python"># this will execute and show the output from
+# all code cells of the specified notebook
+%run ./two-histograms.ipynb
+</code></pre>
+<div class="output_png output_subarea ">
+<img src="/blog/content/images/two-hists.png"/>
+</div>
+<h3 id="8ipythonmagicloadinsertthecodefromanexternalscript">8. IPython Magic - %load: Insert the code from an external script</h3>
+<p>This will replace the contents of the cell with an external script.  You can either use a file on your computer as a source, or alternatively a URL.</p>
+<pre><code class="language-python"># Before Running
+%load ./hello_world.py
+</code></pre>
+<pre><code># After Running
+# %load ./hello_world.py
+if __name__ == &quot;__main__&quot;:
+	print(&quot;Hello World!&quot;)
+</code></pre>
+<pre><code>Hello World!
+</code></pre>
+<h3 id="9ipythonmagicstorepassvariablesbetweennotebooks">9. IPython Magic - %store: Pass variables between notebooks.</h3>
+<p>The <code>%store</code> command lets you pass variables between two different notebooks.</p>
+<pre><code class="language-python">data = 'this is the string I want to pass to different notebook'
+%store data
+del data # This has deleted the variable
+</code></pre>
+<pre><code>Stored 'data' (str)
+</code></pre>
+<p>Now, in a new notebook...</p>
+<pre><code class="language-python">%store -r data
+print(data)
+</code></pre>
+<pre><code>this is the string I want to pass to different notebook
+</code></pre>
+<h3 id="10ipythonmagicwholistallvariablesofglobalscope">10. IPython Magic - %who: List all variables of global scope.</h3>
+<p>The <code>%who</code> command without any arguments will list all variables that existing in the global scope.  Passing a parameter like <code>str</code> will list only variables of that type.</p>
+<pre><code class="language-python">one = &quot;for the money&quot;
+two = &quot;for the show&quot;
+three = &quot;to get ready now go cat go&quot; 
+%who str
+</code></pre>
+<pre><code>one	 three	 two
+</code></pre>
+<h3 id="11ipythonmagictiming">11. IPython Magic - Timing</h3>
+<p>There are two IPython Magic commands that are useful for timing - <code>%%time</code> and <code>%timeit</code>.  These are especially handy when you have some slow code and you're trying to indentify where the issue is.</p>
+<p><code>%%time</code> will give you information about a single run of the code in your cell.</p>
+<pre><code class="language-python">%%time
+import time
+for _ in range(1000):
+    time.sleep(0.01)# sleep for 0.01 seconds
+</code></pre>
+<pre><code>CPU times: user 21.5 ms, sys: 14.8 ms, total: 36.3 ms
+Wall time: 11.6 s
+</code></pre>
+<p><code>%%timeit</code> uses the Python <a href="https://docs.python.org/3.5/library/timeit.html">timeit module</a> which runs a statement 100,000 times (by default) and then provides the mean of the fastest three times.</p>
+<pre><code class="language-python">import numpy
+%timeit numpy.random.normal(size=100)
+</code></pre>
+<pre><code>The slowest run took 7.29 times longer than the fastest. This could mean that an intermediate result is being cached.
+100000 loops, best of 3: 5.5 µs per loop
+</code></pre>
+<h3 id="12ipythonmagicwritefileandpycatexportthecontentsofacellshowthecontentsofanexternalscript">12. IPython Magic - %%writefile and %pycat: Export the contents of a cell/Show the contents of an external script</h3>
+<p>Using the <code>%%writefile</code> magic saves the contents of that cell to an external file.  <code>%pycat</code> does the opposite, and shows you (in a popup) the syntax highlighted contents of an external file.</p>
+<pre><code class="language-python">%%writefile pythoncode.py
+
+import numpy
+def append_if_not_exists(arr, x):
+    if x not in arr:
+        arr.append(x)
+
+def some_useless_slow_function():
+    arr = list()
+    for i in range(10000):
+        x = numpy.random.randint(0, 10000)
+        append_if_not_exists(arr, x)
+</code></pre>
+<pre><code>Writing pythoncode.py
+</code></pre>
+<pre><code>%pycat pythoncode.py
+</code></pre>
+<pre><code>```python
+import numpy
+def append_if_not_exists(arr, x):
+    if x not in arr:
+        arr.append(x)
+
+def some_useless_slow_function():
+    arr = list()
+    for i in range(10000):
+        x = numpy.random.randint(0, 10000)
+        append_if_not_exists(arr, x)
+</code></pre>
+<pre><code>            
+
+
+
+### 13. IPython Magic - %prun: Show how much time your program spent in each function.
+
+Using `%prun statement_name` will give you an ordered table showing you the number of times each internal function was called within the statement, the time each call took as well as the cumulative time of all runs of the function.
+
+
+```python
+%prun some_useless_slow_function()
+</code></pre>
+<pre><code>26324 function calls in 0.556 seconds
+
+Ordered by: internal time
+
+ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+ 10000    0.527    0.000    0.528    0.000 &lt;ipython-input-46-b52343f1a2d5&gt;:2(append_if_not_exists)
+ 10000    0.022    0.000    0.022    0.000 {method 'randint' of 'mtrand.RandomState' objects}
+     1    0.006    0.006    0.556    0.556 &lt;ipython-input-46-b52343f1a2d5&gt;:6(some_useless_slow_function)
+  6320    0.001    0.000    0.001    0.000 {method 'append' of 'list' objects}
+     1    0.000    0.000    0.556    0.556 &lt;string&gt;:1(&lt;module&gt;)
+     1    0.000    0.000    0.556    0.556 {built-in method exec}
+     1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+</code></pre>
+<h3 id="14ipythonmagicdebuggingwithpdb">14. IPython Magic - Debugging with %pdb</h3>
+<p>Jupyter has own interface for <a href="https://docs.python.org/3.5/library/pdb.html">The Python Debugger (<code>pdb</code>)</a>. This makes it possible to go inside the function and investigate what happens there.</p>
+<p>You can view <a href="https://docs.python.org/3.5/library/pdb.html#debugger-commands">a list of accepted commands for <code>pdb</code> here</a>.</p>
+<pre><code class="language-python">%pdb
+
+def pick_and_take():
+    picked = numpy.random.randint(0, 1000)
+    raise NotImplementedError()
+
+pick_and_take()
+</code></pre>
+<pre><code>Automatic pdb calling has been turned ON
+</code></pre>
+<pre><code>---------------------------------------------------------------------------
+NotImplementedError                       Traceback (most recent call last)
+&lt;ipython-input-24-0f6b26649b2e&gt; in &lt;module&gt;()
+      5     raise NotImplementedError()
+      6 
+----&gt; 7 pick_and_take()
+
+&lt;ipython-input-24-0f6b26649b2e&gt; in pick_and_take()
+      3 def pick_and_take():
+      4     picked = numpy.random.randint(0, 1000)
+----&gt; 5     raise NotImplementedError()
+      6 
+      7 pick_and_take()
+
+NotImplementedError:
+</code></pre>
+<pre><code>&gt; &lt;ipython-input-24-0f6b26649b2e&gt;(5)pick_and_take()
+      3 def pick_and_take():
+      4     picked = numpy.random.randint(0, 1000)
+----&gt; 5     raise NotImplementedError()
+      6 
+      7 pick_and_take()
+</code></pre>
+<pre><code>ipdb&gt;
+</code></pre>
+<h3 id="15ipythonmagichighresolutionplotoutputsforretinanotebooks">15. IPython Magic - High-resolution plot outputs for Retina notebooks</h3>
+<p>One line of IPython magic will give you double resolution plot output for Retina screens, such as the more recent Macbooks. <em>Note: the example below won't render on non-retina screens</em></p>
+<pre><code class="language-python">x = range(1000)
+y = [i ** 2 for i in x]
+plt.plot(x,y)
+plt.show();
+</code></pre>
+<pre><code>%config InlineBackend.figure_format = 'retina'
+plt.plot(x,y)
+plt.show();
+</code></pre>
+<div class="output_png output_subarea ">
+<img src="/blog/content/images/hires-1.png"/>
+</div>
+<div class="output_png output_subarea ">
+<img src="/blog/content/images/hires-2.png" style="width:570px"/>
+</div>
+<h2 id="16suppresstheoutputofafinalfunction">16. Suppress the output of a final function.</h2>
+<p>Sometimes it's handy to suppress the output of the function on a final line, for instance when plotting.  To do this, you just add a semicolon at the end.</p>
+<pre><code class="language-python">%matplotlib inline
+from matplotlib import pyplot as plt
+import numpy
+x = numpy.linspace(0, 1, 1000)**1.5
+</code></pre>
+<pre><code># Here you get the output of the function
+plt.hist(x)
+</code></pre>
+<pre><code>(array([ 216.,  126.,  106.,   95.,   87.,   81.,   77.,   73.,   71.,   68.]),
+ array([ 0. ,  0.1,  0.2,  0.3,  0.4,  0.5,  0.6,  0.7,  0.8,  0.9,  1. ]),
+ &lt;a list of 10 Patch objects&gt;)
+</code></pre>
+<pre><code># By adding a semicolon at the end, the output is suppressed.
+plt.hist(x);
+</code></pre>
+<div class="output_png output_subarea ">
+<img src="/blog/content/images/hist.png"/>
+</div>
+<div class="output_png output_subarea">
+<img src="/blog/content/images/hist.png"/>
+</div>
+<h2 id="17executingshellcommands">17. Executing Shell Commands</h2>
+<p>It's easy to execute a shell command from inside your notebook.  You can use this to check what datasets are in available in your working folder:</p>
+<pre><code class="language-python">!ls *.csv
+</code></pre>
+<pre><code>nba_2016.csv             titanic.csv
+pixar_movies.csv         whitehouse_employees.csv
+</code></pre>
+<p>Or to check and manage packages.</p>
+<pre><code class="language-python">!pip install numpy
+!pip list | grep pandas
+</code></pre>
+<pre><code>Requirement already satisfied (use --upgrade to upgrade): numpy in /Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages
+pandas (0.18.1)
+</code></pre>
+<h2 id="18usinglatexforforumlas">18. Using LaTeX for forumlas</h2>
+<p>When you write <a href="https://www.latex-project.org/">LaTeX</a> in a Markdown cell, it will be rendered as a formula using MathJax.</p>
+<p>This:</p>
+<pre><code>\\( P(A \mid B) = \frac{P(B \mid A) \, P(A)}{P(B)} \\)
+</code></pre>
+<p>Becomes this:</p>
+<p>\( P(A \mid B) = \frac{P(B \mid A) , P(A)}{P(B)} \)</p>
+<p>Markdown is an important part of notebooks, so don't forget to use its expressiveness!</p>
+<h2 id="19runcodefromadifferentkernelinanotebook">19. Run code from a different kernel in a notebook</h2>
+<p>If you want to, you can combine code from multiple kernels into one notebook.</p>
+<p>Just use IPython Magics with the name of your kernel at the start of each cell that you want to use that Kernel for:</p>
+<ul>
+<li><code>%%bash</code></li>
+<li><code>%%HTML</code></li>
+<li><code>%%python2</code></li>
+<li><code>%%python3</code></li>
+<li><code>%%ruby</code></li>
+<li><code>%%perl</code></li>
+</ul>
+<pre><code class="language-python">%%bash
+for i in {1..5}
+do
+   echo &quot;i is $i&quot;
+done
+</code></pre>
+<pre><code>i is 1
+i is 2
+i is 3
+i is 4
+i is 5
+</code></pre>
+<h2 id="20installotherkernelsforjupyter">20. Install other kernels for Jupyter</h2>
+<p>One of the nice features about Jupyter is ability to run kernels for different languages.  As an example, here is how to get and R kernel running.</p>
+<h3 id="easyoptioninstallingtherkernelusinganaconda">Easy Option: Installing the R Kernel Using Anaconda</h3>
+<p>If you used Anaconda to set up your environment, getting R working is extremely easy.  Just run the below in your terminal:</p>
+<pre><code>conda install -c r r-essentials
+
+</code></pre>
+<h3 id="lesseasyoptioninstallingtherkernelmanually">Less Easy Option: Installing the R Kernel Manually</h3>
+<p>If you are not using Anaconda, the process is a little more complex.  Firstly, you'll need to install R from <a href="https://cloud.r-project.org/">CRAN</a> if you haven't already.</p>
+<p>Once that's done, fire up an R console and run the following:</p>
+<pre><code>install.packages(c('repr', 'IRdisplay', 'crayon', 'pbdZMQ', 'devtools'))
+devtools::install_github('IRkernel/IRkernel')
+IRkernel::installspec()  # to register the kernel in the current R installation
+</code></pre>
+<h2 id="21runningrandpythoninthesamenotebook">21. Running R and Python in the same notebook.</h2>
+<p>The best solution to this is to install <a href="http://rpy2.bitbucket.org/">rpy2</a> (requires a working version of R as well), which can be easily done with <code>pip</code>:</p>
+<pre><code>pip install rpy2
+</code></pre>
+<p>You can then use the two languages together, and even pass variables inbetween:</p>
+<pre><code class="language-python">%load_ext rpy2.ipython
+</code></pre>
+<pre><code>%R require(ggplot2)
+</code></pre>
+<pre><code>
+</code></pre>
+<pre><code>array([1], dtype=int32)
+</code></pre>
+<pre><code>import pandas as pd
+df = pd.DataFrame({
+        'Letter': ['a', 'a', 'a', 'b', 'b', 'b', 'c', 'c', 'c'],
+        'X': [4, 3, 5, 2, 1, 7, 7, 5, 9],
+        'Y': [0, 4, 3, 6, 7, 10, 11, 9, 13],
+        'Z': [1, 2, 3, 1, 2, 3, 1, 2, 3]
+    })
+</code></pre>
+<pre><code>%%R -i df
+ggplot(data = df) + geom_point(aes(x = X, y= Y, color = Letter, size = Z))
+</code></pre>
+<div class="output_png output_subarea ">
+<img src="/blog/content/images/ggplot.png"/>
+</div>
+<p><em>Example courtesy <a href="http://blog.revolutionanalytics.com/2016/01/pipelining-r-python.html">Revolutions Blog</a></em></p>
+<h2 id="22writingfunctionsinotherlanguages">22. Writing functions in other languages</h2>
+<p>Sometimes the speed of numpy is not enough and I need to write some fast code.<br>
+In principle, you can compile function in the dynamic library and write python wrappers...</p>
+<p>But it is much better when this boring part is done for you, right?</p>
+<p>You can write functions in cython or fortran and use those directly from python code.</p>
+<p>First you'll need to install:</p>
+<pre><code>!pip install cython fortran-magic 
+</code></pre>
+<pre><code class="language-python">%load_ext Cython
+</code></pre>
+<pre><code>%%cython
+def myltiply_by_2(float x):
+    return 2.0 * x
+</code></pre>
+<pre><code>myltiply_by_2(23.)
+</code></pre>
+<p>Personally I prefer to use fortran, which I found very convenient for writing number-crunching functions. More details of usage can be found <a href="http://arogozhnikov.github.io/2015/11/29/using-fortran-from-python.html">here</a>.</p>
+<pre><code class="language-python">%load_ext fortranmagic
+</code></pre>
+<pre><code>%%fortran
+subroutine compute_fortran(x, y, z)
+    real, intent(in) :: x(:), y(:)
+    real, intent(out) :: z(size(x, 1))
+
+    z = sin(x + y)
+
+end subroutine compute_fortran
+</code></pre>
+<pre><code>compute_fortran([1, 2, 3], [4, 5, 6])
+</code></pre>
+<p>There are also different jitter systems which can speed up your python code. More examples <a href="http://arogozhnikov.github.io/2015/09/08/SpeedBenchmarks.html">can be found here</a>.</p>
+<h2 id="23multicursorsupport">23. Multicursor support</h2>
+<p>Jupyter supports mutiple cursors, similar to Sublime Text. Simply click and drag your mouse while holding down <code>Alt</code>.</p>
+<div class="gif-container">
+    <img class='gif'
+    src="/blog/content/images/multiline.gif" />
+    <img class='preview'
+    src="/blog/content/images/multiline.png">
+</div>
+<p><i>Multicursor support.</i></p>
+<h2 id="24jupytercontribextensions">24. Jupyter-contrib extensions</h2>
+<p><a href="https://github.com/ipython-contrib/jupyter_contrib_nbextensions">Jupyter-contrib extensions</a> is a family of extensions which give Jupyter a lot more functionality, including e.g. <code>jupyter spell-checker</code> and <code>code-formatter</code>.</p>
+<p>The following commands will install the extensions, as well as a menu based configurator that will help you browse and enable the extensions from the main Jupyter notebook screen.</p>
+<pre><code>!pip install https://github.com/ipython-contrib/jupyter_contrib_nbextensions/tarball/master
+!pip install jupyter_nbextensions_configurator
+!jupyter contrib nbextension install --user
+!jupyter nbextensions_configurator enable --user
+</code></pre>
+<img src="/blog/content/images/nbextensions.png" />
+<p><i>The nbextension configurator.</i></p>
+<h2 id="25createapresentationfromajupyternotebook">25. Create a presentation from a Jupyter notebook.</h2>
+<p>Damian Avila's <a href="https://github.com/damianavila/RISE">RISE</a> allows you to create a powerpoint style presentation from an existing notebook.</p>
+<p>You can install RISE using conda:</p>
+<pre><code>conda install -c damianavila82 rise
+</code></pre>
+<p>Or alternatively pip:</p>
+<pre><code>pip install RISE
+</code></pre>
+<p>And then run the following code to install and enable the extension:</p>
+<pre><code>jupyter-nbextension install rise --py --sys-prefix
+jupyter-nbextension enable rise --py --sys-prefix
+</code></pre>
+<h2 id="26thejupyteroutputsystem">26. The Jupyter output system</h2>
+<p>Notebooks are displayed as HTML and the cell output can be HTML, so you can return virtually anything: video/audio/images.</p>
+<p>In this example I scan the folder with images in my repository and show thumbnails of the first 5:</p>
+<pre><code class="language-python">import os
+from IPython.display import display, Image
+names = [f for f in os.listdir('../images/ml_demonstrations/') if f.endswith('.png')]
+for name in names[:5]:
+    display(Image('../images/ml_demonstrations/' + name, width=100))
+</code></pre>
+<div class="output_png output_subarea ">
+<img src="/blog/content/images/img1.png" width="100"/>
+</div>
+<div class="output_png output_subarea ">
+<img src="/blog/content/images/img2.png" width="100"/>
+</div>
+<div class="output_png output_subarea ">
+<img src="/blog/content/images/img3.png" width="100"/>
+</div>
+<div class="output_png output_subarea ">
+<img src="/blog/content/images/img4.png" width="100"/>
+</div>
+<div class="output_png output_subarea ">
+<img src="/blog/content/images/img5.png" width="100"/>
+</div>
+<p>We can create the same list with a bash command, because magics and bash calls return python variables:</p>
+<pre><code class="language-python">names = !ls ../images/ml_demonstrations/*.png
+names[:5]
+</code></pre>
+<pre><code>['../images/ml_demonstrations/colah_embeddings.png',
+ '../images/ml_demonstrations/convnetjs.png',
+ '../images/ml_demonstrations/decision_tree.png',
+ '../images/ml_demonstrations/decision_tree_in_course.png',
+ '../images/ml_demonstrations/dream_mnist.png']
+</code></pre>
+<h2 id="27bigdataanalysis">27. 'Big data' analysis</h2>
+<p>A number of solutions are available for querying/processing large data samples:</p>
+<ul>
+<li><a href="https://github.com/ipython/ipyparallel">ipyparallel (formerly ipython cluster)</a> is a good option for simple map-reduce operations in python. We use it in <a href="https://github.com/yandex/rep">rep</a> to train many machine learning models in parallel</li>
+<li><a href="http://www.cloudera.com/documentation/enterprise/5-5-x/topics/spark_ipython.html">pyspark</a></li>
+<li>spark-sql magic <a href="https://github.com/jupyter-incubator/sparkmagic">%%sql</a></li>
+</ul>
+<h2 id="28sharingnotebooks">28. Sharing notebooks</h2>
+<p>The easiest way to share your notebook is simply using the  notebook file (.ipynb), but for those who don't use Jupyter, you have a few options:</p>
+<ul>
+<li>Convert notebooks to html file using the <code>File &gt; Download as &gt; HTML</code> Menu option.</li>
+<li>Share your notebook file with <a href="https://gist.github.com">gists</a> or on github, both of which render the notebooks. See <a href="https://github.com/dataquestio/solutions/blob/master/Mission202Solution.ipynb">this example</a>.
+<ul>
+<li>If you upload your notebook to a github repository, you can use the handy <a href="http://mybinder.org">mybinder</a> service to allow someone half an hour of interactive Jupyter access to your repository.</li>
+</ul>
+</li>
+<li>Setup your own system with <a href="https://github.com/jupyterhub/jupyterhub">jupyterhub</a>, this is very handy when you organize mini-course or workshop and don't have time to care about students machines.</li>
+<li>Store your notebook e.g. in dropbox and put the link to <a href="http://nbviewer.jupyter.org/">nbviewer</a>.  nbviewer will render the notebook from whichever source you host it.</li>
+<li>Use the <code>File &gt; Download as &gt; PDF</code> menu to save your notebook as a PDF.  If you're going this route, I highly recommend reading Julius Schulz's excellent article <a href="http://blog.juliusschulz.de/blog/ultimate-ipython-notebook">Making publication ready Python notebooks</a>.</li>
+<li><a href="https://www.dataquest.io/blog/how-to-setup-a-data-science-blog/">Create a blog using Pelican from your Jupyter notebooks</a>.</li>
+</ul>
+<h2 id="whatareyourfavorites">What are your favorites?</h2>
+<p><a href="https://twitter.com/dataquestio">Let me know</a> what your favorite Jupyter notebook tips are.</p>
+<p>At <a href="https://www.dataquest.io">Dataquest</a>, our interactive guided projects use Jupyter notebooks to building data science projects and get a job in data.  If you're interested, you can <a href="https://www.dataquest.io">signup and do our first module for free</a>.</p>
+<p>I also recommend the links below for further reading:</p>
+<ul>
+<li>IPython <a href="https://ipython.org/ipython-doc/3/interactive/magics.html">built-in magics</a></li>
+<li>Nice <a href="http://quasiben.github.io/dfwmeetup_2014/#/">interactive presentation about jupyter</a> by Ben Zaitlen</li>
+<li>Advanced notebooks <a href="https://blog.dominodatalab.com/lesser-known-ways-of-using-notebooks/">part 1: magics</a><br>
+and <a href="https://blog.dominodatalab.com/interactive-dashboards-in-jupyter/">part 2: widgets</a></li>
+<li><a href="http://pynash.org/2013/03/06/timing-and-profiling/">Profiling in python with jupyter</a></li>
+<li><a href="http://mindtrove.info/4-ways-to-extend-jupyter-notebook/">4 ways to extend notebooks</a></li>
+<li><a href="https://www.quora.com/What-are-your-favorite-tricks-for-IPython-Notebook">IPython notebook tricks</a></li>
+<li><a href="https://www.linkedin.com/pulse/comprehensive-comparison-jupyter-vs-zeppelin-hoc-q-phan-mba-">Jupyter vs Zeppelin for big data</a></li>
+<li><a href="http://blog.juliusschulz.de/blog/ultimate-ipython-notebook">Making publication ready Python notebooks</a>.</li>
+</ul>
+</div>
+            </section>
+
+
+            <footer class="post-full-footer">
+                <div class="newsletter-block">
+                    <data data-token="4d32db293dfe16ddcd8c4583e3dcce22" class="mj-w-data" data-apikey="2N0E" data-w-id="68c" data-lang="en_US" data-base="https://app.mailjet.com" data-width="640" data-height="328" data-statics="statics"></data>
+                    <div class="mj-w-button mj-w-btn" data-token="4d32db293dfe16ddcd8c4583e3dcce22" style="font-family: Ubuntu, Helvetica; color: white; padding: 0px 25px; background-color: rgb(97, 209, 153); text-align: center; vertical-align: middle; display: inline-block; border-radius: 3px;margin-left:auto;margin-right:auto;">
+                        <div style="display: table; height: 45px;">
+                            <div style="display: table-cell; vertical-align: middle;">
+                                <div class="mj-w-button-content" style="font-family:Ubuntu, Helvetica; display: inline-block; text-align: center; font-size: 13px; vertical-align: middle;" onclick="analytics.track(
+                                        'blog-conversion',
+                                          {
+                                            category: 'email-signup',
+                                            label: 'end-post',
+                                          });"><b>SUBSCRIBE TO OUR MAILING LIST!</b></div>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript" src="https://app.mailjet.com/statics/js/widget.modal.js"></script>
+                </div>
+                <div class="author-block">
+
+                    <section class="author-card">
+                            <img class="author-profile-image" src="/blog/content/images/2017/12/josh_profile.png" alt="Josh Devlin" />
+                        <section class="author-card-content">
+                            <h4 class="author-card-name"><a href="/blog/author/josh/">Josh Devlin</a></h4>
+                                <p>Data Scientist at Dataquest.io. Loves Data and Aussie Rules Football. Australian living in Texas.</p>
+                        </section>
+                    </section>
+                    <div class="post-full-footer-right">
+                        <a class="author-card-button" href="/blog/author/josh/">Read More</a>
+                    </div>
+                </div>
+
+
+            </footer>
+
+
+        </article>
+
+    </div>
+    <div id="ad-box-content" style='display: none;'>
+        <h3>Learn data science with Dataquest</h3>
+        <p>
+            Advance your career with data science and data analysis skills.  Get started for free and join 200,000+ students who've been hired at companies like Amazon, SpaceX, and Microsoft.
+        </p>
+        <p>
+            <a class="learning-cta"
+               href="https://www.dataquest.io"
+               onclick="analytics.track(
+                        'blog-conversion',
+                        {
+                          category: 'homepage-link',
+                          label: 'popup-bottom-right',
+                        });"
+              >Start Learning</a>
+        </p>
+
+    </div>
+</main>
+
+<aside class="read-next outer">
+    <div class="inner">
+        <div class="read-next-feed">
+                <article class="read-next-card"
+
+                >
+                    <header class="read-next-card-header">
+                        <small class="read-next-card-header-sitetitle">&mdash; Dataquest Data Science Blog &mdash;</small>
+                        <h3 class="read-next-card-header-title"><a href="/blog/tag/jupyter/">Jupyter</a></h3>
+                    </header>
+                    <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
+</div>
+                    <div class="read-next-card-content">
+                        <ul>
+                            <li><a href="/blog/jupyter-notebook-tutorial/">Jupyter Notebook for Beginners: A Tutorial</a></li>
+                            <li><a href="/blog/setting-up-a-free-data-science-environment-on-google-cloud/">How to Set Up a Free Data Science Environment on Google Cloud</a></li>
+                            <li><a href="/blog/kaggle-getting-started/">Getting Started with Kaggle: House Prices Competition</a></li>
+                        </ul>
+                    </div>
+                    <footer class="read-next-card-footer">
+                        <a href="/blog/tag/jupyter/">See all 6 posts →</a>
+                    </footer>
+                </article>
+
+                <article class="post-card post tag-numpy tag-python tag-resources tag-tutorials no-image" data-title="NumPy Tutorial: Data analysis with Python" data-date="2016-10-17">
+    <div class="post-card-content">
+        <a class="post-card-content-link" href="/blog/numpy-tutorial-python/">
+            <header class="post-card-header">
+                    <span class="post-card-tags">Numpy</span>
+                <span class="post-card-date">Oct 17, 2016</span>
+                <div style="clear:both;"></div>
+                <h2 class="post-card-title">NumPy Tutorial: Data analysis with Python</h2>
+            </header>
+            <section class="post-card-excerpt">
+                <p>This NumPy tutorial introduces key concepts and teaches you to analyze data efficiently.  It includes comparing, filtering, reshaping, and combining NumPy arrays.</p>
+            </section>
+        </a>
+        <footer class="post-card-meta">
+            <span class="post-card-author"><a href="/blog/author/vik/">Vik Paruchuri</a></span>
+        </footer>
+    </div>
+</article>
+
+                <article class="post-card post tag-sqlite tag-python tag-pandas tag-tutorials no-image" data-title="Working with SQLite Databases using Python and Pandas" data-date="2016-10-02">
+    <div class="post-card-content">
+        <a class="post-card-content-link" href="/blog/python-pandas-databases/">
+            <header class="post-card-header">
+                    <span class="post-card-tags">SQLite</span>
+                <span class="post-card-date">Oct 02, 2016</span>
+                <div style="clear:both;"></div>
+                <h2 class="post-card-title">Working with SQLite Databases using Python and Pandas</h2>
+            </header>
+            <section class="post-card-excerpt">
+                <p>In this post, you'll learn to query, update, and create SQLite databases in Python.  We'll also show you how to use the pandas package to speed up your workflow.</p>
+            </section>
+        </a>
+        <footer class="post-card-meta">
+            <span class="post-card-author"><a href="/blog/author/vik/">Vik Paruchuri</a></span>
+        </footer>
+    </div>
+</article>
+
+        </div>
+    </div>
+</aside>
+
+<div class="floating-header">
+    <div class="floating-header-logo">
+        <a href="https://www.dataquest.io/blog">
+                <img src="/blog/content/images/2017/12/ms-icon-144x144.png" alt="Dataquest Data Science Blog icon" />
+            <span>Dataquest Data Science Blog</span>
+        </a>
+    </div>
+    <span class="floating-header-divider">&mdash;</span>
+    <div class="floating-header-title">28 Jupyter Notebook tips, tricks, and shortcuts</div>
+    <div class="floating-header-signup">
+        <a
+          class="author-card-button"
+          href="https://www.dataquest.io"
+          onclick="analytics.track(
+                        'blog-conversion',
+                        {
+                          category: 'homepage-link',
+                          label: 'floating-header',
+                        });"
+          >Learn Data Science Online</a>
+    </div>
+    <div class="floating-header-share">
+        <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
+</svg>
+</div>
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=28%20Jupyter%20Notebook%20tips%2C%20tricks%2C%20and%20shortcuts&amp;url=https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/"
+            onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
+        </a>
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/"
+            onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
+        </a>
+    </div>
+    <progress class="progress" value="0">
+        <div class="progress-container">
+            <span class="progress-bar"></span>
+        </div>
+    </progress>
+</div>
+
+
+
+
+
+        <footer class="site-footer outer">
+            <div class="site-footer-content inner">
+                <section class="copyright"><a href="https://www.dataquest.io/blog">Dataquest Data Science Blog</a> &copy; 2018</section>
+                <nav class="site-footer-nav">
+                    <a href="https://www.dataquest.io/blog">Latest Posts</a>
+                    <a href="https://www.facebook.com/dataquestio/" target="_blank" rel="noopener">Facebook</a>
+                    <a href="https://twitter.com/dataquestio" target="_blank" rel="noopener">Twitter</a>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/blog/assets/js/jquery.fitvids.js?v=876a8c469c"></script>
+    <script type="text/javascript" src="/blog/assets/js/fa-solid.min.js?v=876a8c469c"></script>
+    <script type="text/javascript" src="/blog/assets/js/fontawesome.min.js?v=876a8c469c"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/prism.min.js" ></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/components/prism-python.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/components/prism-r.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/components/prism-sql.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/prism/1.8.4/components/prism-bash.min.js"></script>
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            // Center justify equations in code and markdown cells. Elsewhere
+            // we use CSS to left justify single line equations in code cells.
+            displayAlign: 'center',
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}},
+                linebreaks: { automatic: true }
+            }
+        });
+    </script>
+
+    <script>
+      if(window.location.host === 'www.dataquest.io') {
+        var segment = 'AshBDDdcjA4D5pxKTMHzKN0dCzbjfTc3' // this is the blog prod segment key
+      } else {
+        var segment = 'Cwx1HZOBtWSKbPh9WcJZyyuo7WAYlEIb' // this is the blog test segment key
+      }
+      
+      !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
+      analytics.load(segment);
+      analytics.page()
+      }}();
+    </script>
+
+
+    <script>
+
+// NOTE: Scroll performance is poor in Safari
+// - this appears to be due to the events firing much more slowly in Safari.
+//   Dropping the scroll event and using only a raf loop results in smoother
+//   scrolling but continuous processing even when not scrolling
+$(document).ready(function () {
+    // Start fitVids
+    var $postContent = $(".post-full-content");
+    $postContent.fitVids();
+    // End fitVids
+
+    var progressBar = document.querySelector('progress');
+    var header = document.querySelector('.floating-header');
+    var title = document.querySelector('.post-full-title');
+
+    var lastScrollY = window.scrollY;
+    var lastWindowHeight = window.innerHeight;
+    var lastDocumentHeight = $(document).height();
+    var ticking = false;
+
+    function onScroll() {
+        lastScrollY = window.scrollY;
+        requestTick();
+    }
+
+    function onResize() {
+        lastWindowHeight = window.innerHeight;
+        lastDocumentHeight = $(document).height();
+        requestTick();
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(update);
+        }
+        ticking = true;
+    }
+
+    function update() {
+        var trigger = title.getBoundingClientRect().top + window.scrollY;
+        var triggerOffset = title.offsetHeight + 35;
+        var progressMax = lastDocumentHeight - lastWindowHeight;
+
+        // show/hide floating header
+        if (lastScrollY >= trigger + triggerOffset) {
+            header.classList.add('floating-active');
+        } else {
+            header.classList.remove('floating-active');
+        }
+
+        progressBar.setAttribute('max', progressMax);
+        progressBar.setAttribute('value', lastScrollY);
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', onScroll, {passive: true});
+    window.addEventListener('resize', onResize, false);
+
+    update();
+});
+</script>
+<script src="/blog/assets/js/boxzilla.js?v=876a8c469c"></script>
+<script>
+    Boxzilla.init();
+    Boxzilla.create('ad-box', {
+        content: document.getElementById('ad-box-content').innerHTML,
+        trigger: {
+            method: 'percentage',
+            value: 50
+        },
+        'cookie': {
+            'dismissed': 6,        // hours that a box should stay hidden after being dismissed
+            'triggered': 1          // hours that a box should stay hidden after being triggered
+        },
+        position: "bottom-right"
+    });
+</script>
+<script src="//dqeditor.dataquest.io/dq_post_box.js"></script>
+
+
+    <script src="https://my.hellobar.com/b960428aed859499a86a27f8ce0a0a6bd2ea6c87.js" type="text/javascript" charset="utf-8" async="async"></script>
+
+</body>
+</html>
